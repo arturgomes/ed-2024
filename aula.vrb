@@ -1,0 +1,16 @@
+\frametitle{Solução em JavaScript}
+\begin{lstlisting}[language=JavaScript]
+  function encontrarMelhorAvaliacao(avaliacoes) {
+      ...
+      let melhorId = null;
+      let maiorMedia = 0;
+      for (const id in somaAvaliacoes) {
+          const media = somaAvaliacoes[id] / contagemAvaliacoes[id];
+          if (media > maiorMedia || (media === maiorMedia && (melhorId === null || parseInt(id) < melhorId))) {
+              maiorMedia = media;
+              melhorId = id;
+          }
+      }
+      return melhorId;
+  }
+  \end{lstlisting}

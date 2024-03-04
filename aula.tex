@@ -1,0 +1,98 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme[pageofpages=de,% String used between the current page and the
+                         % total page count.
+          alternativetitlepage=true,% Use the fancy title page.
+          % titlepagelogo=trinity-stacked-full,% Logo for the first page.
+          watermark=trinity-stacked,% Watermark used in every page.
+          watermarkheight=50px,% Height of the watermark.
+          watermarkheightmult=1,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{Torino}
+
+% Nouvelle is a green and red alternative to the chameleon color theme.
+\setbeamercovered{invisible}
+\usecolortheme{nouvelle}%
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuração para JavaScript
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, let, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=8pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+\usepackage{fancyvrb}
+
+% Define um novo ambiente 'mysmallverbatim' que ajusta o tamanho da fonte para 'small'
+\DefineVerbatimEnvironment%
+{mysmallverbatim}{Verbatim}
+{fontsize=\small}
+% \usepackage[pdftex]{graphicx}  
+
+\usepackage[portuguese]{babel}
+
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+%---------------------------------------------------------------------------------
+% packages
+%---------------------------------------------------------------------------------
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\usepackage{preview}
+\PreviewEnvironment{tikzpicture}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{xcolor, soul}
+
+\sethlcolor{lightgray}
+\newcommand{\mycode}[1]{\textcolor{red}{\hl{\texttt{#1}}}}
+% \newcommand{\mycode}[1]{\textcolor{red}{\texttt{#1}}}
+
+
+
+\author{Prof. Artur Oliveira}
+\institute{Sistemas de Informação - CPAN/UFMS}
+
+% \date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+% \begin{frame}
+% \titlepage
+% \end{frame}
+
+
+% \include{aulas/intro}
+% \include{aulas/aula1}
+\include{aulas/aula2}
+
+\end{document}
