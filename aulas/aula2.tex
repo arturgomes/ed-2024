@@ -301,8 +301,8 @@ Comparação dos métodos de tratamento de colisões (cont.):
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Descrição do Problema: Dois Soma}
-O problema "Dois Soma" (Two Sum) é um desafio de codificação clássico 
+\begin{frame}[fragile]{Descrição do Problema: Soma Dois}
+O problema "Soma Dois" (Two Sum) é um desafio de codificação clássico 
 usado em entrevistas de emprego e prática de algoritmos. O objetivo é 
 encontrar dois números em um array de inteiros que somem um valor alvo 
 específico.
@@ -359,7 +359,7 @@ Requisitos:
 \begin{frame}[fragile]{Solução do problema "Dois Soma" em JavaScript}
   \small
   \begin{lstlisting}
-  function doisSoma(numeros, alvo) {
+  function somaDois(numeros, alvo) {
       // Inicializa um objeto para mapear os numeros aos seus indices
       let mapa = {}; 
       for (let i = 0; i < numeros.length; i++) {
@@ -448,4 +448,18 @@ Requisitos:
   }
   \end{lstlisting}
   \end{frame}
+  
+\begin{frame}[fragile]{Agrupamento de Anagramas}
+  Escreva uma função que receba um array de strings e agrupe os anagramas.
+  
+  Anagramas são strings compostas pelas mesmas letras, onde a ordem não importa. Por exemplo, \texttt{"cinema"} e \texttt{"iceman"} são anagramas; da mesma forma, \texttt{"foo"} e \texttt{"ofo"} são anagramas.
+  
+  A função deve retornar uma lista de grupos de anagramas em qualquer ordem.
+
+  \textbf{Entrada de Exemplo:}\\
+  \texttt{words = ["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]}
+
+  \textbf{Saída de Exemplo:}\\
+  \texttt{{[["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]}}
+\end{frame}
   
