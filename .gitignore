@@ -1,39 +1,45 @@
-# LaTeX files
+node_modules
+
+# LaTeX specific
 *.aux
 *.bbl
 *.blg
-*.log
-*.out
-*.toc
-*.synctex.gz
+*.brf
+*.nav
+*.snm
 *.fdb_latexmk
 *.fls
-*.lol
+*.idx
+*.ilg
+*.ind
 *.lof
+*.log
 *.lot
-*.ist
+*.out
+*.toc
 *.acn
 *.acr
 *.alg
 *.glg
 *.glo
 *.gls
-*.glsdefs
 *.ist
-*.fdb_latexmk
-*.fls
-*.pdfsync
-*.bak
-*.dvi
-*.idx
-*.ilg
-*.nav
-*.snm
-*.pdf
-*.ind
-*.inx
-*.toc
-*.fdb_latexmk
-*.fls
+*.slg
+*.slo
+*.sls
 *.synctex.gz
-*.xdv
+*.run.xml
+*-blx.bib
+*.bcf
+
+# Output files
+*.pdf
+
+# Other files you might want to exclude
+
+# Directories
+*/_minted-*/
+
+# OS generated files
+.DS_Store
+Thumbs.db
