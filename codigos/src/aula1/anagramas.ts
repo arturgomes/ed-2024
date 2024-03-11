@@ -1,5 +1,5 @@
 export function contemAnagramas(strs: string[]): string[][] {
-  // Inicializa um objeto para mapear os numeros aos seus indices
+  // Inicializa um objeto para mapear os anagramas aos seus indices
   let mapa: Record<string, string[]> = {};
 
   for (let i = 0; i < strs.length; i++) {
@@ -10,6 +10,5 @@ export function contemAnagramas(strs: string[]): string[][] {
       mapa[sortedStr].push(strs[i]);
     }
   }
-  // Retorna uma lista vazia se nenhum par for encontrado
   return Object.values(mapa);
 }

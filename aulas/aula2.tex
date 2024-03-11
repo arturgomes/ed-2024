@@ -415,17 +415,17 @@ Requisitos:
 
 \begin{frame}[fragile]{Solução em JavaScript}
   \begin{lstlisting}[language=JavaScript]
-  function encontrarMelhorAvaliacao(avaliacoes) {
-      const somaAvaliacoes = {};
-      const contagemAvaliacoes = {};
+    export function encontrarMelhorAvaliacao( avaliacoes: [number, number][] ): string | null {
+      const somaAvaliacoes: Record<number, number> = {};
+      const contagemAvaliacoes: Record<number, number> = {};
       avaliacoes.forEach(([id, rating]) => {
-          if (somaAvaliacoes[id]) {
-              somaAvaliacoes[id] += rating;
-              contagemAvaliacoes[id] += 1;
-          } else {
-              somaAvaliacoes[id] = rating;
-              contagemAvaliacoes[id] = 1;
-          }
+        if (somaAvaliacoes[id]) {
+          somaAvaliacoes[id] += rating;
+          contagemAvaliacoes[id] += 1;
+        } else {
+          somaAvaliacoes[id] = rating;
+          contagemAvaliacoes[id] = 1;
+        }
       });
       ...
   }
@@ -433,19 +433,24 @@ Requisitos:
 \end{frame}
 \begin{frame}[fragile]{Solução em JavaScript}
   \begin{lstlisting}[language=JavaScript]
-  function encontrarMelhorAvaliacao(avaliacoes) {
+    export function encontrarMelhorAvaliacao( avaliacoes: [number, number][] ): string | null {
       ...
-      let melhorId = null;
-      let maiorMedia = 0;
+      let melhorId: string | null = null;
+      let maiorMedia: number = 0;
       for (const id in somaAvaliacoes) {
-          const media = somaAvaliacoes[id] / contagemAvaliacoes[id];
-          if (media > maiorMedia || (media === maiorMedia && (melhorId === null || parseInt(id) < melhorId))) {
-              maiorMedia = media;
-              melhorId = id;
-          }
+        const media = somaAvaliacoes[id] / contagemAvaliacoes[id];
+        if (
+          media > maiorMedia ||
+          (media === maiorMedia &&
+            (melhorId === null || parseInt(id) < parseInt(melhorId)))
+        ) {
+          maiorMedia = media;
+          melhorId = id;
+        }
       }
       return melhorId;
-  }
+    }
+    
   \end{lstlisting}
   \end{frame}
   
@@ -463,3 +468,22 @@ Requisitos:
   \texttt{{[["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]}}
 \end{frame}
   
+\begin{frame}[fragile]{Solução em JavaScript}
+  \begin{lstlisting}[language=JavaScript]
+    export function contemAnagramas(strs: string[]): string[][] {
+      // Inicializa um objeto para mapear os anagramas aos seus indices
+      let mapa: Record<string, string[]> = {};
+
+      for (let i = 0; i < strs.length; i++) {
+        const sortedStr = strs[i].split("").sort().join("");
+        if (!mapa[sortedStr]) {
+          mapa[sortedStr] = [strs[i]];
+        } else {
+          mapa[sortedStr].push(strs[i]);
+        }
+      }
+      return Object.values(mapa);
+    }
+
+  \end{lstlisting}
+  \end{frame}
