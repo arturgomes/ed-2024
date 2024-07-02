@@ -1,0 +1,140 @@
+
+
+\begin{center}
+  Universidade Federal de Mato Grosso do Sul \\
+  Sistemas de Informação - Campus do Pantanal \\
+  \vspace{1em}
+  \textbf{Estruturas de Dados - Primeira prova} \\
+  \vspace{1em}
+  \today \\
+  \vspace{1em}
+  Aluno: \makebox[10cm]{\hrulefill} Nota: \makebox[2cm]{\hrulefill}
+
+
+  \vspace{1em}
+  \textbf{Observações}: 
+  \begin{itemize}
+    \item Para cada inserção ou remoção, faça um quadro mostrando o passo, e indique se está inserindo, removendo e que número
+    \item Quando pertinente, exiba o fator de balanceamento.
+    \item Indique que rotação está fazendo em cada operação.
+  \end{itemize}
+\end{center}
+  \extraheadheight{-0.8in}
+  % \end{coverpages}
+  \vspace{3em}
+  \vspace{0.1in}
+  \hrule
+ 
+
+\begin{questions}
+  \question \textbf{Árvore Binária de busca}
+  \begin{parts}
+    \part[2] Inserir 13, 10, 8, 9, 12, 20, 6, 5, 17, 1
+
+  \part[2] Dada a árvore anterior, agora você deverá remover: 8, 9, 12, 20, 6
+  \end{parts}
+  
+  \question \textbf{Árvore AVL}
+  \begin{parts}
+    \part[2] Inserir: 3, 46, 41, 11, 5, 24, 20, 44, 48, 39
+    \part[2] Dada a árvore anterior, agora você deverá remover: 11, 41, 39, 44, 20
+  \end{parts}
+ 
+ 
+  \question[2] \textbf{Árvore AVL} - Dada a árvore abaixo, remover: 47, 10, 31, 41, 46, 55, 39, 17, 12, 14, 
+
+  \begin{figure}[!h]
+    \centering
+    \caption{Árvore Inicial}
+    \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+   level 1/.style={sibling distance=15em, level distance = 3em},
+    level 2/.style={sibling distance=8em, level distance = 3em},
+    level 3/.style={sibling distance=4em, level distance = 3em},
+    level 4/.style={sibling distance=2em, level distance = 3em},
+    level 5/.style={sibling distance=1em, level distance = 3em} ]
+  \node [wv] (r){30}
+  child { node [wv] {10}
+          child { node [wv] {4}
+            child { node [wv] {2}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child { node [wv] {8}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {17}
+            child { node [wv] {12}
+              child {node [nil] {}}
+              child { node [wv] {14}
+                child {node [nil] {}}
+                child {node [nil] {}}
+              }
+            }
+            child { node [wv] {27}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+        }
+  child { node [wv] {41}
+          child { node [wv] {39}
+            child { node [wv] {31}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+          child { node [wv] {47}
+            child { node [wv] {46}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child { node [wv] {50}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+              };
+  \end{tikzpicture}
+  \end{figure}
+
+  % \begin{figure}[!h]
+  %   \centering
+  %   \caption{Resultado de remover \textbf{47, 10, 31, 39, 17, 12, 14}}
+  %   \begin{tikzpicture}[->,>=stealth',
+  %   % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  %  level 1/.style={sibling distance=15em, level distance = 3em},
+  %   level 2/.style={sibling distance=8em, level distance = 3em},
+  %   level 3/.style={sibling distance=4em, level distance = 3em},
+  %   level 4/.style={sibling distance=2em, level distance = 3em},
+  %   level 5/.style={sibling distance=1em, level distance = 3em} ]
+  % \node [wv] (r){30}
+  %     child { node [wv] {4}
+  %       child { node [wv] {2}
+  %         child {node [nil] {}}
+  %         child {node [nil] {}}
+  %       }
+  %       child { node [wv] {27}
+  %         child { node [wv] {8}
+  %           child {node [nil] {}}
+  %           child {node [nil] {}}
+  %         }
+  %         child {node [nil] {}}
+  %       }
+  %     }
+  %     child { node [wv] {46}
+  %       child { node [wv] {41}
+  %         child {node [nil] {}}
+  %         child {node [nil] {}}
+  %       }
+  %       child { node [wv] {50}
+  %         child {node [nil] {}}
+  %         child {node [nil] {}}
+  %       }
+  %     };
+  % \end{tikzpicture}
+  % \end{figure}
+\end{questions}

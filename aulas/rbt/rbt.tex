@@ -1,0 +1,97 @@
+\documentclass[aspectratio=169]{beamer}
+% \setlength{\parskip}{6pt}
+%\usetheme{Madrid}
+
+
+% \documentclass[11pt,a4paper,oneside]{report}
+% \documentclass{article}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cases}
+\usepackage{todonotes}
+\usepackage{float}
+
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-berge}
+\usepackage{tkz-graph}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,enumerate,ifthen}
+% Nouvelle is a green and red alternative to the chameleon color theme.
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+%---------------------------------------------------------------------------------
+% packages
+%---------------------------------------------------------------------------------
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{preview}
+\usetikzlibrary{arrows,positioning}
+\PreviewEnvironment{tikzpicture}
+\usepackage{amssymb}
+
+\usetikzlibrary{trees,arrows,positioning, calc}
+\tikzstyle{wv}  =[draw,fill=white, circle,minimum size=14pt,inner sep=0pt, text=black]
+\tikzstyle{gv}  =[draw,fill=gray, circle,minimum size=14pt,inner sep=0pt, text=black]
+\tikzstyle{gv}  =[draw,fill=green, circle,minimum size=14pt,inner sep=0pt, text=black]
+\tikzstyle{rv}  =[draw,fill=red, circle,minimum size=14pt,inner sep=0pt, text=white]
+\tikzstyle{bv}  =[draw,fill=black, circle,minimum size=14pt,inner sep=0pt, text=white]
+% \tikzstyle{brv}  =[draw,fill=red, circle,minimum size=20pt,inner sep=0pt, text=white]
+\tikzstyle{brv}  =[draw,fill=red, circle,minimum size=14pt,inner sep=0pt, text=white]
+% \tikzstyle{bbv}  =[draw,fill=black, circle,minimum size=20pt,inner sep=0pt, text=white]
+\tikzstyle{bbv}  =[draw,fill=black, circle,minimum size=14pt,inner sep=0pt, text=white]
+% \tikzstyle{bwv}  =[draw=white,fill=white, circle,minimum size=14pt,inner sep=0pt, text=black]
+\tikzstyle{bwv}  =[draw=black,fill=white, rectangle,minimum size=14pt,inner sep=0pt, text=black]
+
+% \tikzstyle{nil} =[draw,isosceles triangle,
+% isosceles triangle apex angle=90, draw=black, minimum size=18pt, inner sep=0pt, text=Black]
+\tikzstyle{nil} =[fill=black,rectangle, draw=black, minimum width=0.3em, minimum height=0.3em]
+\tikzstyle{db}  =[draw,rectangle, fill=black, minimum width=2em, minimum height=2em]
+\tikzset{
+  treenode/.style = {
+    circle, 
+    draw=black, 
+    align=center, 
+    minimum size=1cm
+  },
+  subtree/.style  = {
+    isosceles triangle, 
+    draw=black, 
+    align=center, 
+    minimum height=0.5cm,   
+    minimum width=1cm, 
+    shape border rotate=90, 
+    anchor=north
+  }
+}
+
+\title{Inserção na Rubro Negra}
+
+\author{Artur O. Gomes}
+\institute{SI/CPAN/UFMS}
+
+\date{\today} % Date, can be changed to a custom date
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+\input{intro/intro.tex}
+\input{insertion/insertion.tex}
+\input{insertion/ex1.tex}
+\input{insertion/ex2.tex}
+\input{insertion/ex3.tex}
+\input{insertion/ex4.tex}
+\input{insertion/ex5.tex}
+% \input{intro/intro-rb.tex}
+% \include{removal/remocao-rb}
+
+\end{document}

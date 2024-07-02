@@ -1,0 +1,71 @@
+\documentclass[aspectratio=169]{beamer}
+% \setlength{\parskip}{6pt}
+\usetheme{Madrid}
+
+
+% \documentclass[11pt,a4paper,oneside]{report}
+% \documentclass{article}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cases}
+\usepackage{todonotes}
+\usepackage{float}
+
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-berge}
+\usepackage{tkz-graph}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,enumerate,ifthen}
+
+% \usetheme{Berkeley}
+% \setbeamertemplate{navigation symbols}{}
+% \beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+% \setbeamertemplate{sidebar right}{}
+% \setbeamertemplate{footline}{%
+%     \hfill\usebeamertemplate***{navigation symbols}
+%     \hspace{1cm}\insertframenumber{}/\inserttotalframenumber}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,positioning}
+% \usepackage{macros}
+
+
+
+
+\renewcommand{\chaptername}{Árvore}
+
+\usetikzlibrary{backgrounds}
+
+\usetikzlibrary{trees,arrows,positioning, calc}
+\tikzstyle{wv}  =[draw,fill=white, circle,minimum size=18pt,inner sep=0pt, text=black]
+\tikzstyle{gv}  =[draw,fill=gray, circle,minimum size=18pt,inner sep=0pt, text=black]
+\tikzstyle{rv}  =[draw,fill=red, circle,minimum size=18pt,inner sep=0pt, text=white]
+\tikzstyle{bv}  =[draw,fill=black, circle,minimum size=18pt,inner sep=0pt, text=white]
+% \tikzstyle{nil} =[draw,isosceles triangle,
+% isosceles triangle apex angle=90, draw=black, minimum size=18pt, inner sep=0pt, text=Black]
+\tikzstyle{nil} =[draw,rectangle, draw=black, minimum width=0.5em, minimum height=0.5em]
+\tikzstyle{db}  =[draw,rectangle, fill=black, minimum width=2em, minimum height=2em]
+
+\usepackage{chngcntr}
+\counterwithout{figure}{section}
+
+\parindent0in
+\pagestyle{plain}
+\thispagestyle{plain}
+
+\title{Árvores AVL}
+\author{Prof. Artur Oliveira}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\clearpage
+\input{avl.tex}
+
+\end{document}

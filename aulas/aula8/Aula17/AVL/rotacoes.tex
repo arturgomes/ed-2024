@@ -1,0 +1,321 @@
+
+
+
+
+\section{Rotações Simples}
+
+%%%%%%
+\subsection{À direita (RSD)}
+%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  O nó \textbf{filho} está no \textbf{filho esquerdo} da \emph{sub-árvore esquerda} de $S$.
+  \begin{columns}[T] % align columns
+    \begin{column}{.48\textwidth}
+    \rule{\linewidth}{4pt}
+    \begin{figure}[!h]
+      \centering
+      
+    
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=7em},
+      level 2/.style={sibling distance=4em},
+      level 3/.style={sibling distance=2em},
+      level 4/.style={sibling distance=2em}]
+    \node [wv] (r){8}
+    child { node [wv] {6}
+    child { node [rv] {4}
+    child {node [nil] {A}}
+    child {node [nil] {B}}
+    }
+    child {node [nil] {C}}
+    }
+    child {node [nil] {D}}
+    ;
+    \end{tikzpicture}
+    \end{figure}
+   
+    \end{column}%
+    \hfill%
+    \begin{column}{.48\textwidth}
+    \rule{\linewidth}{4pt}
+          
+        
+    \begin{figure}[!h]
+      \centering
+      
+
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=7em},
+      level 2/.style={sibling distance=4em},
+      level 3/.style={sibling distance=2em},
+      level 4/.style={sibling distance=2em}]
+    \node [wv] (r){6}
+    child { node [wv] {4}
+      child {node [nil] {A}}
+      child {node [nil] {B}}
+    }
+    child { node [wv] {8}
+      child {node [nil] {C}}
+      child {node [nil] {D}}
+    };
+    \end{tikzpicture}
+    \end{figure}
+    \end{column}%
+    \end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+
+\subsection{À esquerda (RSE)}
+%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  O nó \textbf{filho} está no \textbf{filho direito} da \emph{sub-árvore direita} de $S$.
+  \begin{columns}[T] % align columns
+    \begin{column}{.48\textwidth}
+    \rule{\linewidth}{4pt}
+    
+
+      \begin{figure}[!h]
+        \centering
+        
+      \begin{tikzpicture}[->,>=stealth',
+        % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+        level 1/.style={sibling distance=7em},
+        level 2/.style={sibling distance=4em},
+        level 3/.style={sibling distance=2em},
+        level 4/.style={sibling distance=2em}]
+      \node [wv] (r){4}
+      child {node [nil] {A}}
+      child { node [wv] {6}
+          child {node [nil] {B}}
+          child { node [rv] {8}
+          child {node [nil] {C}}
+          child {node [nil] {D}}
+        }
+      };
+      \end{tikzpicture}
+      \end{figure}
+   
+    \end{column}%
+    \hfill%
+    \begin{column}{.48\textwidth}
+    \rule{\linewidth}{4pt}
+          
+        
+      \begin{figure}[!h]
+        \centering
+        
+
+      \begin{tikzpicture}[->,>=stealth',
+        % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+        level 1/.style={sibling distance=7em},
+        level 2/.style={sibling distance=4em},
+        level 3/.style={sibling distance=2em},
+        level 4/.style={sibling distance=2em}]
+      \node [wv] (r){6}
+      child { node [wv] {4}
+      child {node [nil] {A}}
+      child {node [nil] {B}}
+      }
+      child { node [wv] {8}
+      child {node [nil] {C}}
+      child {node [nil] {D}}
+      };
+      \end{tikzpicture}
+      \end{figure}
+    \end{column}%
+    \end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+
+
+\section{Rotações Duplas}
+
+%%%%%%
+\subsection{RSE + RSD = RED}
+%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  O nó \textbf{filho} está no \textbf{filho direito} da \emph{sub-árvore esquerda} de $S$. 
+  \begin{columns}[T] % align columns
+    \begin{column}{.31\textwidth}
+    \rule{\linewidth}{4pt}
+    
+    \begin{figure}[!h]
+      \centering
+      
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=7em},
+      level 2/.style={sibling distance=4em},
+      level 3/.style={sibling distance=2em},
+      level 4/.style={sibling distance=2em}]
+    \node [wv] (r){8}
+    child { node [wv] {4}
+            child {node [nil] {A}}
+            child { node [rv] {6}
+              child {node [nil] {B}}
+              child {node [nil] {C}}
+            }
+    }
+    child {node [nil] {D}};
+    \end{tikzpicture}
+    \caption{Aplicar RSE}
+    \end{figure}
+    \end{column}%
+    \hfill%
+    \begin{column}{.31\textwidth}
+    \rule{\linewidth}{4pt}
+    
+    \begin{figure}[!h]
+      \centering
+      
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=7em},
+      level 2/.style={sibling distance=4em},
+      level 3/.style={sibling distance=2em},
+      level 4/.style={sibling distance=2em}]
+      \node [wv] (r){8}
+        child { node [wv] {6}
+          child { node [wv] {4}
+            child {node [nil] {A}}
+            child {node [nil] {B}}
+          }
+          child {node [nil] {C}}
+        }
+        child {node [nil] {D}};
+    \end{tikzpicture}
+      \caption{Aplicar RSD}
+    \end{figure}
+    \end{column}%
+
+    \hfill%
+    \begin{column}{.31\textwidth}
+    \color{black}\rule{\linewidth}{4pt}
+    
+    \begin{figure}[!h]
+      \centering
+      
+      \begin{tikzpicture}[->,>=stealth',
+        % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+        level 1/.style={sibling distance=7em},
+        level 2/.style={sibling distance=4em},
+        level 3/.style={sibling distance=2em},
+        level 4/.style={sibling distance=2em}]
+      \node [wv] (r){6}
+      child { node [wv] {4}
+        child {node [nil] {A}}
+        child {node [nil] {B}}
+      }
+      child { node [wv] {8}
+        child {node [nil] {C}}
+        child {node [nil] {D}}
+      };
+      \end{tikzpicture}
+      \caption{Final}
+    \end{figure}
+    \end{column}%
+    \end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+
+\subsection{RSD + RSE = RDE}
+
+%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  O nó \textbf{filho} está no \textbf{filho esquerdo} da \emph{sub-árvore direita} de $S$. 
+  \begin{columns}[T] % align columns
+    \begin{column}{.31\textwidth}
+    \rule{\linewidth}{4pt}
+    
+    \begin{figure}[!h]
+      \centering
+      
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=7em},
+      level 2/.style={sibling distance=4em},
+      level 3/.style={sibling distance=2em},
+      level 4/.style={sibling distance=2em}]
+    \node [wv] (r){4}
+    child {node [nil] {A}}
+    child { node [wv] {8}
+      child { node [rv] {6}
+        child {node [nil] {B}}
+        child {node [nil] {C}}
+      }
+      child {node [nil] {D}}
+    };
+    \end{tikzpicture}
+    \caption{Aplicar RSD}
+    \end{figure}
+    \end{column}%
+    \hfill%
+    \begin{column}{.31\textwidth}
+    \rule{\linewidth}{4pt}
+    
+    \begin{figure}[!h]
+      \centering
+      
+      \begin{tikzpicture}[->,>=stealth',
+        % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+        level 1/.style={sibling distance=7em},
+        level 2/.style={sibling distance=4em},
+        level 3/.style={sibling distance=2em},
+        level 4/.style={sibling distance=2em}]
+        \node [wv] (r){4}
+        child {node [nil] {A}}
+        child { node [wv] {6}
+        child {node [nil] {B}}
+        child { node [wv] {8}
+        child {node [nil] {C}}
+        child {node [nil] {D}}
+        }
+        };
+      \end{tikzpicture}
+      \caption{Aplicar RSE}
+    \end{figure}
+    \end{column}%
+    \hfill%
+    \begin{column}{.31\textwidth}
+    \color{black}\rule{\linewidth}{4pt}
+    
+    \begin{figure}[!h]
+      \centering
+      
+
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=7em},
+      level 2/.style={sibling distance=4em},
+      level 3/.style={sibling distance=2em},
+      level 4/.style={sibling distance=2em}]
+    \node [wv] (r){6}
+    child { node [wv] {4}
+      child {node [nil] {A}}
+      child {node [nil] {B}}
+    }
+    child { node [wv] {8}
+      child {node [nil] {C}}
+      child {node [nil] {D}}
+    };
+    \end{tikzpicture}
+    \caption{Final}
+    \end{figure}
+    \end{column}%
+    \end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%

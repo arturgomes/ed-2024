@@ -1,0 +1,1220 @@
+
+\section{Arvore 10}
+\begin{frame}
+\frametitle{Arvore 10}
+
+% \begin{preview}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {
+      node [bv] {47}
+      child {node [nil] {}}
+      child {
+        node [rv] {55}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+% \end{preview}
+\end{frame}
+\subsection{Remover 47}
+\begin{frame}
+\frametitle{Remover 47}
+
+\begin{itemize}
+\item Achar no a ser removido
+\item O nó a ser removido não tem filho esquerdo.
+\item Substituir a posição do 47 por 55.
+\item Recolorir o 55 para preto.
+\end{itemize}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {
+      node [rm] {47}
+      child {node [nil] {}}
+      child {
+        node [rv] {55}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+% \end{preview}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 47}
+
+
+% \begin{preview}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {
+        node [bv] {55}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+% \end{preview}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+
+
+\begin{itemize}
+\item Achar no a ser removido
+\item Remover o nó
+\end{itemize}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {
+        node [rm] {55}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+% \begin{preview}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [nil] {}}
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+
+
+% \end{preview}
+\begin{itemize}
+\item Tornar o nó removido como DUPLO PRETO
+\end{itemize}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [db] {}}
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+
+\begin{itemize}
+\item Olhe as regras...
+\item O duplo preto tem irmão preto, e o sobrinho direito é preto.
+\item Rotacione a arvore para tornar o sobrinho oposto vermelho.
+\end{itemize}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [db] {}}
+    child {
+      node [rv] {76}
+      child {node [nil] {}}
+      child {
+        node [bv] {83}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [db] {}}
+    child {
+      node [bv] {76}
+      child {node [nil] {}}
+      child {
+        node [rv] {83}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+
+
+\begin{itemize}
+\item Duplo preto tem irmão preto e sobrinho direito vermelho.
+\item Rotação simples para corrigir o duplo-preto
+\end{itemize}
+
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [bv] {76}
+    child {
+      node [rv] {62}
+      child {node [db] {}}
+      child {node [nil] {}}
+    }
+    child {
+      node [rv] {83}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+\frametitle{Remover 55}
+\begin{itemize}
+\item Depois da rotação
+\begin{itemize}
+\item Pai VERMELHO
+\item Filhos PRETOS
+\end{itemize}
+\end{itemize}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {76}
+    child {
+      node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {
+      node [bv] {83}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+
+%%%%% 83
+
+\begin{frame}
+\frametitle{Remover 83}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {76}
+    child {
+      node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {
+      node [rm] {83}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Remover 83}
+
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {76}
+    child {
+      node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Remover 83}
+
+\begin{itemize}
+\item Tornar o nó removido DUPLO PRETO
+\end{itemize}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {76}
+    child {
+      node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [db] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Remover 83}
+\begin{itemize}
+\item Duplo preto tem irmão preto e dois sobrinhos pretos.
+\item Solução: Subir o preto um nível
+\end{itemize}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [bv] {76}
+    child {
+      node [rv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [db] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Remover 83}
+\begin{itemize}
+\item Duplo preto tem irmão preto e dois sobrinhos pretos.
+\item Solução: Subir o preto um nível
+\end{itemize}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [bv] {76}
+    child {
+      node [rv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 76}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rm] {76}
+    child {
+      node [rv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 76}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 76}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 22}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [rv] {29}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Remover 22}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {29}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 18}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rm] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {29}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Remover 18}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {20}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {29}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Remover 18}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {20}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 20}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rm] {20}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Remover 20}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [bv] {29}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {node [nil] {}}
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Remover 20}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+\node [bv] (r){46}
+  child { node [rv] {29}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {node [nil] {}}
+  }
+  child {
+    node [bv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+  };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Remover 20}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bv] (r){46}
+    child { node [bv] {14}
+      child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+      child { node [rv] {29}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+    }
+    child {
+      node [bv] {62}
+        child {node [nil] {}}
+        child {node [nil] {}}
+    };
+\end{tikzpicture}
+\end{frame}
+\begin{frame}
+
+\frametitle{Remover 20}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+  level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+  level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+  level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bv] (r){46}
+    child { node [rv] {14}
+      child { node [bv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+      child { node [bv] {29}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+    }
+    child {
+      node [bv] {62}
+        child {node [nil] {}}
+        child {node [nil] {}}
+    };
+\end{tikzpicture}
+\end{frame}
+
+% \begin{frame}
+% \frametitle{E FIM!}
+% \end{frame}

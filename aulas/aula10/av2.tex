@@ -1,0 +1,1151 @@
+
+\subsection{Exemplo 2 - Remover 47, 10, 31, 39, 17, 12, 14}
+% gv,label=above:+2
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47}, 10, 31, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Remover 47}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child { node [wv] {14}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [rv] {47}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {50}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47}, 10, 31, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child { node [wv] {14}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [gv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [gv] {50}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47}, 10, 31, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child { node [wv] {14}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10}, 31, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Remover 10}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [rv] {10}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child { node [wv] {14}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10}, 31, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{remover 10 : sucessor 12}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [gv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [gv] {12}
+            child {node [nil] {}}
+            child { node [wv] {14}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10}, 31, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{remover 10: remover sucessor 12 duplicado}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31}, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{remover 31}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [rv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31}, 39, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{remover 31}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39}, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{remover 39}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [rv] {39}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child { node [wv] {50}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39}, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{remover 39}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [gv,label=above:+2] {41}
+    child {node [nil] {}}   
+    child { node [gv,label=above:-1] {50}
+      child { node [gv,label=above:0] {46}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39}, 17, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{RSD 50 AR 46 + RSE 41 AR 46}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+%%%
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17}, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{REM 17}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [rv] {17}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17}, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{REM 17}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [gv] {27}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [gv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17}, 12, 14
+\begin{figure}[!h]
+  \centering
+  \caption{REM 17}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12}, 14
+\begin{figure}[!h]
+  \centering
+  \caption{REM 12}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [rv] {12}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child { node [wv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12}, 14
+\begin{figure}[!h]
+  \centering
+  \caption{REM 12}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [gv] {14}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child { node [gv] {14}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12}, 14
+\begin{figure}[!h]
+  \centering
+  \caption{REM 12}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {14}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12, 14}
+\begin{figure}[!h]
+  \centering
+  \caption{REM 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [rv] {14}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12, 14}
+\begin{figure}[!h]
+  \centering
+  \caption{REM 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [gv] {27}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12, 14}
+\begin{figure}[!h]
+  \centering
+  \caption{REM 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [gv] {27}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child {node [nil] {}}
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12, 14}
+\begin{figure}[!h]
+  \centering
+  \caption{REM 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [gv,label=above:-2] {27}
+        child { node [gv,label=above:0] {4}
+          child { node [gv,label=above:0] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child {node [nil] {}}
+      }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[fragile] {\secname : \subsecname}
+  Remover: \textbf{47, 10, 31, 39, 17, 12, 14}
+\begin{figure}[!h]
+  \centering
+  \caption{REM 14}
+  \begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+    child { node [wv] {4}
+      child { node [wv] {2}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {27}
+        child { node [wv] {8}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [nil] {}}
+      }
+    }
+    child { node [wv] {46}
+      child { node [wv] {41}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {50}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    };
+\end{tikzpicture}
+\end{figure}
+\end{frame}

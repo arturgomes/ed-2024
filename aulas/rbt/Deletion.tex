@@ -1,0 +1,413 @@
+\documentclass{article}
+\usepackage[pdftex]{preview}
+% \setlength\PreviewBorder{2mm}
+
+\usepackage{tikz}
+\usetikzlibrary{trees,arrows,positioning, calc}
+\tikzstyle{rv}  =[draw,fill=red,     circle,minimum size=18pt,inner sep=0pt, text=white]
+\tikzstyle{bv}=[draw,fill=black,   circle,minimum size=18pt,inner sep=0pt, text=white]
+\tikzstyle{nil}        =[draw,rectangle, draw=black, minimum width=0.5em, minimum height=0.5em]
+\tikzstyle{db}        =[draw,rectangle, fill=black, minimum width=2em, minimum height=2em]
+
+
+\begin{document}
+\section{Arvore 10}
+
+% \begin{preview}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {
+      node [bv] {47}
+      child {node [nil] {}}
+      child {
+        node [rv] {55}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+% \end{preview}
+
+\subsection{Remover 47}
+
+\begin{itemize}
+\item Achar no a ser removido
+\item O nó a ser removido não tem filho esquerdo.
+\item Substituir a posição do 47 por 55.
+\item Recolorir o 55 para preto.
+\end{itemize}
+
+% \begin{preview}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {
+        node [bv] {55}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+% \end{preview}
+
+
+\subsection{Remover 55}
+
+\begin{itemize}
+\item Achar no a ser removido
+\item Remover o nó
+\end{itemize}
+
+% \begin{preview}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [nil] {}}
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+% \end{preview}
+\begin{itemize}
+\item Tornar o nó removido como DUPLO PRETO
+\end{itemize}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [db] {}}
+    child {
+      node [bv] {83}
+      child {
+        node [rv] {76}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+        child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\begin{itemize}
+\item Olhe as regras...
+\item O duplo preto tem irmão preto, e o sobrinho direito é preto.
+\item Rotacione a arvore para tornar o sobrinho oposto vermelho.
+\end{itemize}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [db] {}}
+    child {
+      node [rv] {76}
+      child {node [nil] {}}
+      child {
+        node [bv] {83}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [rv] {62}
+    child {node [db] {}}
+    child {
+      node [bv] {76}
+      child {node [nil] {}}
+      child {
+        node [rv] {83}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  };
+\end{tikzpicture}
+\begin{itemize}
+\item Duplo preto tem irmão preto e sobrinho direito vermelho.
+\item Rotação simples para corrigir o duplo-preto
+\end{itemize}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [bv] {76}
+    child {
+      node [rv] {62}
+      child {node [db] {}}
+      child {node [nil] {}}
+    }
+    child {
+      node [rv] {83}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em},
+  level 2/.style={sibling distance=8em},
+  level 3/.style={sibling distance=4em},
+  level 4/.style={sibling distance=2em}]
+\node [bv] (r){46}
+  child { node [rv] {18}
+    child { node [bv] {14}
+            child { node [rv] {9}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+          }
+    child {
+      node [bv] {22}
+      child {
+        node [rv] {20}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {
+        node [rv] {29}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {
+    node [bv] {76}
+    child {
+      node [rv] {62}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {
+      node [rv] {83}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{document}

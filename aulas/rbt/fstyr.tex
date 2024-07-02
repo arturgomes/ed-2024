@@ -1,0 +1,439 @@
+\documentclass{beamer}
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          alternativetitlepage=true,% Use the fancy title page.
+         % titlepagelogo=trinity-stacked-full,% Logo for the first page.
+          watermark=trinity-stacked,% Watermark used in every page.
+          watermarkheight=100px,% Height of the watermark.
+          watermarkheightmult=4,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{Torino}
+% Nouvelle is a green and red alternative to the chameleon color theme.
+\usecolortheme{nouvelle}%
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{epstopdf}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+\usepackage{tikz}
+\usepackage{amssymb}
+\usetikzlibrary{arrows,positioning}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+
+% \usepackage{hyperref}
+% \usepackage{HD}
+\usepackage[color]{circus}
+
+\newcommand*{\fcourier}{\fontfamily{pcr}\selectfont}
+\DeclareTextFontCommand{\tco}{\fcourier}
+% Haemodialysis macro definitions
+%
+\def\HMCS#1{[HMCS{#1}]}
+\def\R#1{\textbf{R-{#1}}}
+\def\SS#1{\textbf{S-{#1}}}
+%listing CSP code
+\newenvironment{mylisting}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\scriptsize\bfseries}
+{\end{list}}
+\newenvironment{mytinylisting}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\tiny\bfseries}
+{\end{list}}
+\newcommand{\CSPM}{$CSP_M$}
+\def\Circus{{\sf\slshape{Circus}}}
+\def\CRefine{{\sf\slshape{CRefine}}}
+\def\JCircus{{\sf\slshape{JCircus}}}
+\def\CircusT{{\sf\slshape{Circus~Time}}}
+
+%et al. in italic
+\newcommand{\etal}{\textit{et al}. }
+\newcommand{\ie}{\textit{i}.\textit{e}., }
+\newcommand{\eg}{\textit{e}.\textit{g}. }
+% drafting notes
+% swap comment around to make them disappear/appear
+%\def\DRAFT#1{~\newline\textbf{DRAFT:}\textsc{{#1}}\textbf{:END}\newline~}
+\def\DRAFT#1{}
+%
+
+\newcounter{examplecounter}
+\newenvironment{lawn}[1][]{%
+    \refstepco unter{bexamplecounter}%
+  \textbf{Law \arabic{examplecounter} (#1)}%
+  \quad
+}{%
+}
+% \numberwithin{examplecounter}{section}
+\newenvironment{prov}
+  {\newline\noindent\ provided }
+  {}
+\newenvironment{provs}
+  {\newline\noindent\ provided\begin{itemize}}
+  {\end{itemize}}
+% \mode<presentation> {
+%  \usetheme{Frankfurt}
+% }
+
+
+%----------------------------------------------------------------------------------------
+% TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+\title{A Verified Translation from \Circus\ to \CSPM}
+
+\author{Artur O. Gomes}
+\institute{ Trinity College Dublin \\School of Computer Science and Statistics \\Lero, the Irish Software Research Centre \\\url{gomesa@tcd.ie} }
+
+\date{\today} % Date, can be changed to a custom date
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Motivation}
+\begin{itemize}
+  \item Manual work on formal validation of systems is time consuming 
+  and it can be as error-prone as is the software to be validated.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation}
+\begin{itemize}
+  \item Why a Verified Translation Tool?
+  \begin{itemize}
+    \item No tool support for model checking \Circus\ directly
+    \item Manual translation into CSP is hard
+    \item Model checking \Circus\ is very often performed by the \Circus\ community.
+    \item Verification Grand Challenge (VGC)~\footnote{Woodcock, Jim, and Richard Banach. "The Verification Grand Challenge." J. UCS 13.5 (2007): 661-668.}: "\emph{Build an integrated suite of tools to support all aspects of verified software construction: requirements capture, specification, validation, test case generation, refinement, analysis, verification, and run time checking}"
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+\frametitle{Why is it so important?}
+\begin{itemize}
+  \item The Haemodialysis case study~\footnote{Gomes, A.O., Butterfield, A. "Modelling the Haemodialysis Machine with Circus."
+In: ABZ’16. LNCS, vol. 9675, pp. 409–-424. Springer (2016)}
+  \begin{itemize}
+    \item \Circus\ specification of a Haemodialysis machine
+    \item Model checking using FDR\footnote{Gibson-Robinson, Thomas, et al. "FDR3-—A Modern Refinement Checker for CSP." \emph{International Conference on Tools and Algorithms for the Construction and Analysis of Systems}. Springer Berlin Heidelberg, 2014.}
+    \item Translation from \Circus\ to CSP
+      \begin{itemize}
+        \item Not always straigthforward
+        \item Time consuming task
+      \end{itemize}
+  \item From our conclusions:
+      \begin{itemize}
+        \item The manual translation is not easy for large systems
+        \item An automatic tool would be useful for this task.
+      \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Research Question}
+\begin{itemize}
+  \item How do we verify a Haskell implementation of the translation tool?
+  \item Why Haskell? Does it makes the task easier?
+  \item What precisely means for the translator to be correct?
+  \item What is the relationship of the translation tool in development here and the arguments in Oliveira \emph{et. al.}\footnote{Oliveira, M.V.M., Sampaio, A.C.A., Antonino, P.R.G., Ramos, R.T., Cavalcanti,
+A.L.C., Woodcock, J.C.P.: \emph{Compositional Analysis and Design of CML Models}. Tech. Rep. D24.1, COMPASS Deliverable (2013)} about the correctness of their translation scheme?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{How do we translate \Circus\ into CSP?}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.8\textheight]{figs/circus-translation}
+  \label{phd-table}
+ \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Translating \Circus\ into CSP - An overview}
+\begin{itemize}
+  \item Transform a \Circus\ state into a CSP process offering to update and retrieve the values of its components
+  \item \Circus\ processes and actions are translated into CSP
+\end{itemize}
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Can we transliterate 100\% of \Circus?}
+% \begin{itemize}
+%   \item No.
+%   \item Only a subset of \Circus\ can be translated
+%   \item A few constructs are not equivalent
+%   \begin{itemize}
+%     \item Example: in the action $c?x \rightarrow A(x)$, the value of $x$ can not be updated in $A(x)$.
+%   \end{itemize}
+%   \item Guarded commands and some Z constructs, such as schemas, are not directly translated into CSP
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}
+\frametitle{Can we transliterate 100\% of \Circus?}
+\begin{itemize}
+  \item A few constructs are not equivalent
+  \item Example: in the \Circus\ action $c?x \rightarrow A(x)$.
+  \begin{itemize}
+    \item In Circus, it is the same of: $\Box~c.k \rightarrow x:= k ; A$ 
+    \item In CSP, it means: $\Box~c.k \then A[k/x]$
+  \end{itemize}
+  \item Another example is a prefix followed by a sequential composition.
+  \begin{itemize}
+    \item \Circus: $e \rightarrow~P~;~Q~=~e~\rightarrow~(P;Q)$
+    \item CSP: $(e~\rightarrow~P);Q~\neq~e~\rightarrow~(P;Q)$
+  \end{itemize}
+  \item Guarded commands and some Z constructs, such as schemas, are translated into CSP
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Implementing the Tool}
+\begin{itemize}
+  \item Based on work from Oliveira \emph{et. al.}
+  \begin{itemize}
+    \item[I] We transform staterich \Circus\ processes into stateless processes, with help of the refinement laws of \Circus.
+    \item[II] Then we translate stateless \Circus\ processes into CSP
+  \end{itemize}
+  \item Built in Haskell in an extended version of JAZA that parses \Circus\ specification written in \LaTeX
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Implementing the Tool}
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.6\textwidth]{figs/circus-to-csp-diagram}
+  \caption{Mapping \Circus\ into \CSPM}
+ \end{figure}
+ Where
+ \begin{itemize}
+  \item $Circus_{SR}$: with staterich processes
+  \item $Circus_{SL}$: staterich processes are translated into stateless processes
+  \item $Circus_{CSP}$: subset of \Circus\ ready for mapping into \CSPM\
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tasks for the PhD - What we've done}
+\begin{itemize}
+  \item Implementing the parser - Extending JAZA
+  \item Implementing part of the refinement laws
+  \item Implementing the $\Omega_A$ transformation functions towards a stateless process
+  \item Implementing the $\Upsilon$ mapping functions from \Circus\ to CSP
+  \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Refinement laws}
+Variable block introduction law example
+   \begin{circus}
+       A = \circvar\ x:T \circspot A %
+   \end{circus}%
+   \vspace{-20px}
+   \begin{prov}
+       $x \notin FV(A)$
+   \end{prov}
+\linebreak \linebreak is implemented in Haskell as
+\begin{verbatim}
+crl_variableBlockIntroduction a x t
+  = case p1 of
+      True -> CActionCommand (CVarDecl [(Choose x t)] a)
+      False -> a
+    where
+      p1 = not (elem x (getFV a))
+\end{verbatim}
+\end{frame}
+\begin{frame}
+\frametitle{Implementing the $\Omega_A$ transformation functions}
+Some examples...
+\small
+\begin{circus}
+\Omega_A (\Skip) \circdef \Skip
+\also \Omega_A (c \then A) \circdef c \then \Omega_A (A)
+\also \Omega_A (A_1 \extchoice A_2) \circdef
+\\\t1 get.v_0?vv_0 \then \ldots \then get.v_n?vv_n \then
+\\\t1 get.l_0?vl_0 \then \ldots \then get.l_m?vl_m \then
+\\\t2 (\Omega'_A (A_1) \extchoice \Omega'_A (A_2))
+\also \Omega_A (\Semi x : \langle v_1,...,v_n \rangle \circspot A(x)) \circdef \Omega_A (A(v_1)\circseq \ldots \circseq A(v_n))
+\also \Omega_A (\Extchoice x : \langle v_1,...,v_n \rangle \circspot A(x)) \circdef \Omega_A (A(v_1)\extchoice \ldots \extchoice A(v_n))
+\end{circus}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Implementing the $\Omega_A$ transformation functions}
+We illustrate how the $\Omega$ functions
+\small
+\begin{circus}
+\Omega_A (\Skip) \circdef \Skip
+\also \Omega_A (c \then A) \circdef c \then \Omega_A (A)
+\end{circus}
+\normalsize
+are implemented in Haskell as
+\small
+\begin{verbatim}
+omega_CActions :: CAction -> CAction
+omega_CActions CSPSkip = CSPSkip
+omega_CActions (CSPCommAction (ChanComm c []) a)
+  = (CSPCommAction (ChanComm c []) (omega_CActions a))
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Implementing the $\Upsilon$ mapping functions}
+Some examples...
+\small
+\begin{circus}
+\Upsilon_A(\Skip) \defs~\tco{SKIP}
+\also \Upsilon_A(c!v \then\ A)\circdef~\tco{c!v -> }\Upsilon_A(A)
+\also \Upsilon_A(A \extchoice B) \circdef~\Upsilon_A(A) ~\tco{[]} \Upsilon_A(B)
+\also \Upsilon_A(\Semi x : S \circspot A)\circdef~\tco{; x :}\Upsilon_{seq}(S)~\tco{@}~\Upsilon_A(A)
+\also \Upsilon_A(\Extchoice x : S \circspot A)\circdef~\tco{[] x :}~\Upsilon_{\mathbb{P}}(S)~\tco{@}~\Upsilon_A(A)
+\end{circus}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Implementing the $\Upsilon$ mapping functions}
+We then illustrate how the $\Upsilon$ functions are implemented
+\small
+\begin{circus}
+\Upsilon_A(c\then\ A)\circdef~\tco{c -> }\Upsilon_A(A)
+\end{circus}
+\begin{verbatim}
+mapping_CAction :: [ZPara] -> CAction -> ZName
+mapping_CAction spec (CSPCommAction c a)
+  = (get_channel_name c)
+    ++ " -> " ++ mapping_CAction spec (a)
+\end{verbatim}
+\vspace{-20px}
+\begin{circus}
+\Upsilon_A(A \extchoice B) \circdef~\Upsilon_A(A) ~\tco{[]} \Upsilon_A(B)
+\end{circus}
+\begin{verbatim}
+mapping_CAction spec (CSPExtChoice a b)
+  = mapping_CAction spec (a)
+    ++ " [] " ++ mapping_CAction spec (b)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tasks for the PhD - In execution}
+\begin{itemize}
+  \item Implementing some auxiliary functions - part of the $\Omega_P$ transformation towards the stateless process
+  \item Integrating both $\Omega$ and $\Upsilon$ functions into JAZA
+  \item First round of tests - Using the Haemodialysis case study~\footnote{Gomes, A.O., Butterfield, A. "Modelling the Haemodialysis Machine with Circus."In: ABZ’16. LNCS, vol. 9675, pp. 409–-424. Springer (2016)} and the ARINC 653~\footnote{Oliveira Gomes, Artur. "Formal Specification of the ARINC 653 Architecture Using Circus." (2012).} \Circus\ specifications
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Tasks for the PhD - $\Omega_P$ transformation}
+The staterich process P,
+\begin{figure}[htbp]
+  % \centering
+    \includegraphics[width=0.5\textwidth]{figs/staterich}
+ \end{figure}
+ is then transformed into 
+ \begin{figure}[htbp]
+  % \centering
+    \includegraphics[width=0.5\textwidth]{figs/statelesss}
+ \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tasks for the PhD - Next steps}
+\begin{itemize}
+ \item Verifying the tool with Haskabelle\footnote{Rittweiler, Tobias, and Florian Haftmann. "Haskabelle--converting Haskell source files to Isabelle/HOL theories." (2013).} - Isabelle/HOL
+  \begin{itemize}
+    \item Defining the specification of the translation to be captured in Isabelle/HOL
+    \item Establishing the theorem of correctness of the implementation
+    \item Defining the refinement relation between laws and translations from Oliveira \emph{et. al.},
+and the corresponding Haskell code that implements those translations
+  \end{itemize} 
+  \item Second round of tests after the verification process of the tool
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Verifying the tool with Haskabelle}
+\begin{itemize}
+  \item Run Haskabelle to get Isabelle/HOL version of Haskell AST type.
+  \item Give abstract definition of $\Omega$ using this type.
+  \begin{itemize}
+    \item Encode refinement laws in Isabelle/HOL
+  \end{itemize}
+  \item Incrementally work on translation
+  \item Another contribution: Formalising the translation specification in Isabelle/HOL
+\end{itemize}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                thick,main node/.style={rectangle,draw,font=\sffamily\small    \bfseries}]  
+
+\node[main node] (1) {$P_{SR}$};
+\node[main node] (2) [right = of 1] {$(P'_{SL},MEM)$};
+\node[main node] (4) [below = of 1] {$P_{SR_{AST}}$};
+\node[main node] (5) [right = of 4, below = of 2] {$(P_{SL_{AST}},MEM_{AST})$};
+\node[main node] (3) [below right = 1cm of 2] {$(P'_{CSP},MEM_{CSP})$};
+
+% \node[main node] (6) [right = of 5, below = of 3] {$(P'_{CSP},MEM_{CSP})$};
+
+\path[every node/.style={sloped,anchor=south,auto=false,font=\sffamily\small}]
+(1) edge node {$\Omega$} (2)
+(1) edge node {Haskell Repr} (4)
+(2) edge [bend left] node [below] {$\Upsilon$} (3)
+(4) edge node {} (1)
+(5) edge node {Haskell Repr} (2)
+(5) edge [bend right] node [below] {$\Upsilon_{Haskell}$} (3)
+(4) edge node {$\Omega_{Haskell}$} (5);
+\end{tikzpicture}
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Tasks for the PhD - Schedule table}
+% \begin{figure}[htbp]
+%   \centering
+%     \includegraphics[width=0.9\textwidth]{figs/schedule-phd-table}
+%   \caption{Schedule from 2016 until 2018}
+%  \end{figure}
+% \end{frame}
+
+% \begin{frame}
+% \frametitle{Tasks for the PhD - Schedule}
+% \begin{figure}[htbp]
+%   \centering
+%     \includegraphics[width=\textwidth]{figs/schedule-phd-diagram}
+%   \caption{Schedule from 2016 until 2018}
+%  \end{figure}
+% \end{frame}
+
+\begin{frame}
+\frametitle{Thank you}
+  % \begin{itemize}
+  %   \item Started the PhD in September 2014, whilst lecturing in Brazil, but arrived in Dublin in January 2015
+  %   \item On leave until December 2017
+  %   \item Can apply for an leave extension of 6 months
+  %   \item Viva should happen during the leave
+  % \end{itemize}
+  \begin{figure}
+  \includegraphics[width=0.7\textwidth]{sponsors}
+  \end{figure}
+\end{frame}
+
+\end{document}

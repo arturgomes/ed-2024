@@ -1,0 +1,560 @@
+
+\section{ex}
+
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 18}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [nil] {}}
+  child {node [nil] {}}
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 5}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [brv] {6}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [nil] {}}
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 29}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [brv] {6}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [brv] {29}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 22}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [brv] {6}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [brv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{TVC}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [brv] (r){18}
+  child {node [bbv] {6}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [bbv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Raíz é sempre preto}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {6}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [bbv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Insere 16}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {6}
+    child {node [nil] {}}
+    child {node [brv] {16}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [bbv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Insere 17}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {6}
+    child {node [nil] {}}
+    child {node [brv] {16}
+      child {node [nil] {}}
+      child {node [brv] {17}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  child {node [bbv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{TPR - RSE 6 AR 16}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {16}
+    child {node [brv] {6}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [bbv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 24}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {16}
+    child {node [brv] {6}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [bbv] {29}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [brv] {24}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{TPR - RSE 22 AR 24 RSD 29 AR 24}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {16}
+    child {node [brv] {6}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [bbv] {24}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 23}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {16}
+    child {node [brv] {6}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [bbv] {24}
+    child {node [brv] {22}
+      child {node [nil] {}}
+      child {node [brv] {23}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [brv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{TVC}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {16}
+    child {node [brv] {6}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [brv] {24}
+    child {node [bbv] {22}
+      child {node [nil] {}}
+      child {node [brv] {23}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inser 9}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [bbv] {16}
+    child {node [brv] {6}
+      child {node [nil] {}}
+      child {node [brv] {9}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [brv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [brv] {24}
+    child {node [bbv] {22}
+      child {node [nil] {}}
+      child {node [brv] {23}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{TVC}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [brv] {16}
+    child {node [bbv] {6}
+      child {node [nil] {}}
+      child {node [brv] {9}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [brv] {24}
+    child {node [bbv] {22}
+      child {node [nil] {}}
+      child {node [brv] {23}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {29}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  Conjunto 2: 18, 6, 29, 22, 16, 17, 24, 23, 9, 26
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 26}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){18}
+  child {node [brv] {16}
+    child {node [bbv] {6}
+      child {node [nil] {}}
+      child {node [brv] {9}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {17}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  child {node [brv] {24}
+    child {node [bbv] {22}
+      child {node [nil] {}}
+      child {node [brv] {23}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {29}
+      child {node [brv] {26}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+

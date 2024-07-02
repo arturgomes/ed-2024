@@ -1,0 +1,935 @@
+
+\subsection{Exemplo 2}
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4}, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{ Inserir 4 }
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){4}
+child {node [nil] {}}
+child {node [nil] {}};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39}, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{ Inserir 39}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){4}
+
+child {node [nil] {}}
+child { node [wv] {39}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30}, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 30}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [gv,label=above:+2] (r){4}
+child {node [nil] {}}
+child {node [gv,label=above:-1] {39}
+              child { node [gv,label=above:0] {30}
+                child {node [nil] {}}
+                child {node [nil] {}}
+              }
+              child {node [nil] {}}
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30}, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{ RSD 39 AR 30 }
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [gv,label=above:+2] (r){4}
+child {node [nil] {}}
+child {node [gv,label=above:+1] {30}
+              child {node [nil] {}}
+              child { node [gv,label=above:0] {39}
+                child {node [nil] {}}
+                child {node [nil] {}}
+              }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30}, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{RSE 4 AR 30}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {4}
+                child {node [nil] {}}
+                child {node [nil] {}}
+              }
+child { node [wv] {39}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27}, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 27}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {4}
+                child {node [nil] {}}
+                child { node [wv] {27}
+                  child {node [nil] {}}
+                  child {node [nil] {}}
+                }
+              }
+child { node [wv] {39}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41}, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 41}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {4}
+                child {node [nil] {}}
+                child { node [wv] {27}
+                  child {node [nil] {}}
+                  child {node [nil] {}}
+                }
+              }
+child { node [wv] {39}
+              child {node [nil] {}}
+              child { node [wv] {41}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46}, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 46}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {4}
+                child {node [nil] {}}
+                child { node [wv] {27}
+                  child {node [nil] {}}
+                  child {node [nil] {}}
+                }
+              }
+child { node [gv,label=above:+2] {39}
+              child {node [nil] {}}
+              child { node [gv,label=above:+1] {41}
+                child {node [nil] {}}
+                child { node [gv,label=above:0] {46}
+                  child {node [nil] {}}
+                  child {node [nil] {}}
+                }
+              }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46}, 47, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{RSE 39 AR 41}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {4}
+                child {node [nil] {}}
+                child { node [wv] {27}
+                  child {node [nil] {}}
+                  child {node [nil] {}}
+                }
+              }
+child { node [wv] {41}
+        child { node [wv] {39}
+        child {node [nil] {}}
+        child {node [nil] {}}
+        }
+        child { node [wv] {46}
+        child {node [nil] {}}
+        child {node [nil] {}}
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47}, 10, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 47}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {4}
+                child {node [nil] {}}
+                child { node [wv] {27}
+                  child {node [nil] {}}
+                  child {node [nil] {}}
+                }
+              }
+child { node [wv] {41}
+        child { node [wv] {39}
+        child {node [nil] {}}
+        child {node [nil] {}}
+        }
+        child { node [wv] {46}
+        child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10}, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 10}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [gv,label=above:+2] {4}
+                child {node [nil] {}}
+                child { node [gv,label=above:-1] {27}
+                  child { node [gv,label=above:0] {10}
+                    child {node [nil] {}}
+                    child {node [nil] {}}
+                  }
+                  child {node [nil] {}}
+                }
+              }
+child { node [wv] {41}
+        child { node [wv] {39}
+        child {node [nil] {}}
+        child {node [nil] {}}
+        }
+        child { node [wv] {46}
+        child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10}, 31, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{RSD 27 AR 10 + RSE 4 AR 10}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child { node [wv] {27}
+                child {node [nil] {}}
+                child {node [nil] {}}
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child {node [nil] {}}
+         child {node [nil] {}}
+        }
+        child { node [wv] {46}
+          child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31}, 8, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 31}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child { node [wv] {27}
+                child {node [nil] {}}
+                child {node [nil] {}}
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {46}
+          child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8}, 17, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 8}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+                child {node [nil] {}}
+                child {node [nil] {}}
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {46}
+          child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17}, 12, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 17}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {27}
+          child { node [wv] {17}
+            child {node [nil] {}}
+            child {node [nil] {}}
+           }
+                child {node [nil] {}}
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {46}
+          child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12}, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 12}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [gv,label=above:-2] {27}
+          child { node [gv,label=above:-1] {17}
+            child { node [gv,label=above:0] {12}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+            child {node [nil] {}}
+           }
+                child {node [nil] {}}
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {46}
+          child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12}, 50, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{RSD 27 AR 17}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {46}
+          child {node [nil] {}}
+          child { node [wv] {47}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50}, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 50}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [gv,label=above:+2] {46}
+          child {node [nil] {}}
+          child { node [gv,label=above:+1] {47}
+            child {node [nil] {}}
+            child { node [gv,label=above:0] {50}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50}, 2, 14
+\begin{figure}[!h]
+  \centering
+  \caption{RSE 46 AR 47}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child {node [nil] {}}
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {47}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {50}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2}, 14
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 2}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {47}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {50}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+%%%
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Inserir: \textbf{4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14}
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 14}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+ level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+\node [wv] (r){30}
+child { node [wv] {10}
+        child { node [wv] {4}
+          child { node [wv] {2}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {8}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child { node [wv] {17}
+          child { node [wv] {12}
+            child {node [nil] {}}
+            child { node [wv] {14}
+              child {node [nil] {}}
+              child {node [nil] {}}
+            }
+          }
+          child { node [wv] {27}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+child { node [wv] {41}
+        child { node [wv] {39}
+          child { node [wv] {31}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child {node [nil] {}}
+        }
+        child { node [wv] {47}
+          child { node [wv] {46}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+          child { node [wv] {50}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+            };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+%%%
+
+

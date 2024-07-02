@@ -1,0 +1,348 @@
+\title{Rubro Negra}
+\date{\today}
+\frame{\titlepage}
+% \chapter{Árvores Rubro-Negras}
+\begin{frame}[fragile] 
+  \frametitle{Árvore Rubro-Negra}
+  \begin{theorem}
+    Uma árvore rubro-negra é uma árvore binária de busca balanceada na 
+    qual cada nó interno tem dois filhos. Cada nó interno tem uma cor, 
+    tal que:
+    
+    \begin{itemize}
+    \item Árvore balanceada
+    \item Trata cada nó como preta ou vermelhos
+    \item Cada vez que adicionamos um nó, conferimos a árvore com as regras da ARN.
+    \item Dependendo da violação das regras, faremos uma inversão de cores ou rotação para corrigir os erros na árvore
+    \end{itemize}
+    \end{theorem}
+    
+    Precisamos adaptar as operações de inserção e deleção de forma que as 
+    propriedades rubro negras sejam mantidas.
+\end{frame}
+    
+
+%%%%%%%%%%%%
+%% FRAME %%%
+%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Árvore Rubro-Negra - Regras}
+  \begin{theorem}
+  
+  \begin{itemize}
+  \item[0.] Cada nó é preto ou vermelho 
+  \item[1.] O nó raiz é sempre preto.
+  \item[2.] Todos os nós folha (Null) são pretos.
+  \item[3.] Novas inserções são sempre vermelhas.  
+  \item[4.] Todos os caminhos percorridos na árvore contém o mesmo número de nós pretos (\textbf{\emph{altura-negra}}).
+  \item[5.] Nenhum caminho pode ter dois nós vermelhos consecultivos. 
+  \item[6.] Se um nó é vermelho, então ambos os filhos são pretos. 
+  \item[7.] Os ponteiros dos nós folha (representados como quadrados pretos) continuam sendo "nulos" e não carregam nenhum valor.
+  \end{itemize}
+  \end{theorem}
+  
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Típica árvore rubro-negra} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){6}
+    child {node [brv] {3}
+      child {node [bbv] {1}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [brv] {8}
+      child {node [bbv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {9}
+        child {node [nil] {}}
+        child {node [brv] {10}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%
+%% FRAME %%%
+%%%%%%%%%%%%
+\begin{frame}[fragile]
+  \frametitle{Regras pra corrigir a árvore}
+
+  \begin{itemize}
+    \item \textbf{Tio Preto} - Rotaciona (TPR)
+    \item \textbf{Tio Vermelho} - inverte cor (TVI)
+  \end{itemize}
+
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\caption{Resultado da TPR}
+\begin{tikzpicture}[->,>=stealth',
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [bbv] (r){c}
+    child [color=black] {node [brv] {a}}
+    child [color=black] {node [brv] {c}}
+;
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\caption{Resultado da TVI}
+  \begin{tikzpicture}[->,>=stealth',
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [brv] (r){c}
+    child [color=black] {node [bbv] {a}}
+    child [color=black] {node [bbv] {c}}
+;
+\end{tikzpicture}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+
+%%%%%%%%%%%%`'
+%% FRAME %%%
+%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Caso 1 - O tio de \textbf{a}, (\textbf{d}), é vermelho}
+TVC - tio-vermelho-colorir 
+Então como a gente faz pra corrigir a quebra de invariante (coloração rubro-negra?) 
+
+É o que vamos ver agora!
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\caption{Antes}
+\begin{tikzpicture}[->,>=stealth',
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [bbv] (r){c}
+child [color=black] { node [brv] {b}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] { node [brv] {a}
+          child [color=black] {node [bwv] {x}}
+          child [color=black] {node [bwv] {y}}
+        }
+      }
+child [color=black] { node [brv] {d}
+        child [color=black] {node [bwv] {p}}
+        child [color=black] {node [bwv] {q}}
+};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\caption{Depois}
+  \begin{tikzpicture}[->,>=stealth',
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [brv] (r){c}
+child [color=black] { node [bbv] {b}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] { node [brv] {a}
+          child [color=black] {node [bwv] {x}}
+          child [color=black] {node [bwv] {y}}
+        }
+      }
+child [color=black] { node [bbv] {d}
+        child [color=black] {node [bwv] {p}}
+        child [color=black] {node [bwv] {q}}
+};
+\end{tikzpicture}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%
+%% FRAME %%%
+%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Caso 2 - O tio de \textbf{a}, (\textbf{d}), é preto e \textbf{a} é filho direito}
+TPR - tio-preto-rotaciona
+% \pagebreak
+\begin{itemize}
+  \item Rotação à esquerda do pai de \textbf{a}, (\textbf{b}), ao redor de \textbf{a}
+  \item Continua para o \textbf{Caso 3}
+\end{itemize}
+
+\begin{columns}[T] % align columns
+  \begin{column}{.48\textwidth}
+  \rule{\linewidth}{4pt}
+  \begin{figure}[!h]
+  \caption{Antes}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=3em, level distance = 3em},
+  level 3/.style={sibling distance=2em, level distance = 3em}
+]
+\node [bbv] (r){c}
+child [color=black] { node [brv] {b}
+        child [color=black] {node [bwv] {x}}
+        child [color=black] { node [brv] {a}
+          child [color=black] {node [bwv] {y}}
+          child [color=black] {node [bwv] {z}}
+        }
+      }
+child [color=black] { node [bwv] {w}};
+\end{tikzpicture}
+\end{figure}
+   
+\end{column}%
+\hfill%
+\begin{column}{.48\textwidth}
+\rule{\linewidth}{4pt}
+      
+    
+\begin{figure}[!h]
+  \centering
+  % \centering
+  \caption{Depois}
+\begin{tikzpicture}[->,>=stealth',
+   % level/.style={sibling distance = 20em, level distance = 3em},
+   level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=3em, level distance = 3em},
+  level 3/.style={sibling distance=2em, level distance = 3em},
+  ] 
+\node [bbv] (r){c}
+child [color=black] { node [brv] {a}
+    child [color=black] { node [brv] {b}
+      child [color=black] {node [bwv] {x}}
+      child [color=black] {node [bwv] {y}}
+    }
+    child [color=black] {node [bwv] {z}}
+}
+child [color=black] { node [bwv] {w}};
+\end{tikzpicture}
+\end{figure}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%
+%% FRAME %%%
+%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Caso 3 - O tio de \textbf{a}, (\textbf{d}), é preto e \textbf{a} é filho esquerdo }
+
+\begin{itemize}
+  \item Rotação à direita de \textbf{c}, ao redor de \textbf{b}
+  \item Troque as cores entre o pai de \textbf{b}, (\textbf{a}) e seu novo irmão (\textbf{c}).
+\end{itemize}
+  
+
+\begin{columns}[T] % align columns
+  \begin{column}{.31\textwidth}
+  \rule{\linewidth}{4pt}
+  \begin{figure}[!h]
+  \caption{Antes}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=3em, level distance = 3em},
+  level 3/.style={sibling distance=2em, level distance = 3em}
+]
+\node [bbv] (r){c}
+child [color=black] { node [brv] {a}
+    child [color=black] { node [brv] {b}
+      child [color=black] {node [bwv] {x}}
+      child [color=black] {node [bwv] {y}}
+    }
+    child [color=black] {node [bwv] {z}}
+}
+child [color=black] { node [bwv] {w}};
+\end{tikzpicture}
+\end{figure}
+   
+\end{column}%
+\hfill%
+\begin{column}{.31\textwidth}
+\rule{\linewidth}{4pt}
+      
+    
+\begin{figure}[!h]
+  \centering
+  % \centering
+  \caption{Durante}
+\begin{tikzpicture}[->,>=stealth',
+   % level/.style={sibling distance = 20em, level distance = 3em},
+   level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=3em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em},
+  ] 
+  \node [brv] (r){a}
+  child [color=black] { node [brv] {b}
+    child [color=black] {node [bwv] {x}}
+    child [color=black] {node [bwv] {y}}
+  }
+  child [color=black] { node [bbv] {c}
+    child [color=black] {node [bwv] {z}}
+    child [color=black] {node [bwv] {w}}
+  };
+\end{tikzpicture}
+\end{figure}
+\end{column}%
+%
+\hfill%
+\begin{column}{.31\textwidth}
+\rule{\linewidth}{4pt}
+      
+    
+\begin{figure}[!h]
+  \centering
+  % \centering
+  \caption{Depois}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 20em, level distance = 3em},
+    level 1/.style={sibling distance=6em, level distance = 3em},
+   level 2/.style={sibling distance=3em, level distance = 3em},
+   level 3/.style={sibling distance=3em, level distance = 3em},
+   ] 
+   \node [bbv] (r){a}
+   child [color=black] { node [brv] {b}
+     child [color=black] {node [bwv] {x}}
+     child [color=black] {node [bwv] {y}}
+   }
+   child [color=black] { node [brv] {c}
+     child [color=black] {node [bwv] {z}}
+     child [color=black] {node [bwv] {w}}
+   };
+ \end{tikzpicture}
+
+\end{figure}
+\end{column}%
+\end{columns}
+\end{frame}
+  

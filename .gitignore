@@ -5,6 +5,7 @@ node_modules
 *.bbl
 *.blg
 *.brf
+*.vrb
 *.nav
 *.snm
 *.fdb_latexmk

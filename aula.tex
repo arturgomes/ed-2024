@@ -12,47 +12,6 @@
 % Nouvelle is a green and red alternative to the chameleon color theme.
 \setbeamercovered{invisible}
 \usecolortheme{nouvelle}%
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usetikzlibrary{positioning,shapes.geometric}
-\usepackage{listings}
-\usepackage{xcolor}
-
-% Configuração para JavaScript
-\lstdefinelanguage{JavaScript}{
-  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, let, while, with},
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]',
-  morestring=[b]"
-}
-
-\lstset{
-   language=JavaScript,
-   extendedchars=true,
-   basicstyle=\footnotesize\ttfamily,
-   showstringspaces=false,
-   showspaces=false,
-   numbers=left,
-   numberstyle=\footnotesize,
-   numbersep=8pt,
-   tabsize=2,
-   breaklines=true,
-   showtabs=false,
-   captionpos=b
-}
-
-\usepackage{fancyvrb}
-
-% Define um novo ambiente 'mysmallverbatim' que ajusta o tamanho da fonte para 'small'
-\DefineVerbatimEnvironment%
-{mysmallverbatim}{Verbatim}
-{fontsize=\small}
-% \usepackage[pdftex]{graphicx}  
-
-\usepackage[portuguese]{babel}
 
 %--------------------------------------
 
@@ -65,18 +24,79 @@
 % packages
 %---------------------------------------------------------------------------------
 \usepackage{verbatim}
-\usepackage{tikz}
-\usetikzlibrary{arrows,positioning}
 \usepackage{preview}
-\PreviewEnvironment{tikzpicture}
-\usepackage{listings}
-\usepackage{amssymb}
 \usepackage{xcolor, soul}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tkz-berge}
+\usepackage{tkz-graph}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,enumerate,ifthen}
+
+% Define um novo ambiente 'mysmallverbatim' que ajusta o tamanho da fonte para 'small'
+\DefineVerbatimEnvironment%
+{mysmallverbatim}{Verbatim}
+{fontsize=\small}
+% \usepackage[pdftex]{graphicx}  
+
+
 
 \sethlcolor{lightgray}
 \newcommand{\mycode}[1]{\textcolor{red}{\hl{\texttt{#1}}}}
 % \newcommand{\mycode}[1]{\textcolor{red}{\texttt{#1}}}
+\PreviewEnvironment{tikzpicture}
 
+\usetikzlibrary{positioning,shapes.geometric}
+\usetikzlibrary{trees,arrows,positioning, calc}
+
+\usetikzlibrary{backgrounds}
+\tikzstyle{wv}  =[draw,fill=white, circle,minimum size=18pt,inner sep=0pt, text=black]
+\tikzstyle{gv}  =[draw,fill=gray, circle,minimum size=18pt,inner sep=0pt, text=black]
+\tikzstyle{rv}  =[draw,fill=red, circle,minimum size=18pt,inner sep=0pt, text=white]
+\tikzstyle{bv}  =[draw,fill=black, circle,minimum size=18pt,inner sep=0pt, text=white]
+% \tikzstyle{nil} =[draw,isosceles triangle,
+% isosceles triangle apex angle=90, draw=black, minimum size=18pt, inner sep=0pt, text=Black]
+\tikzstyle{nil} =[draw,rectangle, draw=black, minimum width=0.5em, minimum height=0.5em]
+\tikzstyle{db}  =[draw,rectangle, fill=black, minimum width=2em, minimum height=2em]
+
+
+\usetikzlibrary{trees,arrows,positioning, calc}
+% \tikzstyle{brv}  =[draw,fill=red, circle,minimum size=20pt,inner sep=0pt, text=white]
+\tikzstyle{brv}  =[draw,fill=red, circle,minimum size=14pt,inner sep=0pt, text=white]
+% \tikzstyle{bbv}  =[draw,fill=black, circle,minimum size=20pt,inner sep=0pt, text=white]
+\tikzstyle{bbv}  =[draw,fill=black, circle,minimum size=14pt,inner sep=0pt, text=white]
+% \tikzstyle{bwv}  =[draw=white,fill=white, circle,minimum size=14pt,inner sep=0pt, text=black]
+\tikzstyle{bwv}  =[draw=black,fill=white, rectangle,minimum size=14pt,inner sep=0pt, text=black]
+
+% \tikzstyle{nil} =[draw,isosceles triangle,
+% isosceles triangle apex angle=90, draw=black, minimum size=18pt, inner sep=0pt, text=Black]
+\tikzstyle{nil} =[fill=black,rectangle, draw=black, minimum width=0.3em, minimum height=0.3em]
+\tikzstyle{db}  =[draw,rectangle, fill=black, minimum width=2em, minimum height=2em]
+\tikzset{
+  treenode/.style = {
+    circle, 
+    draw=black, 
+    align=center, 
+    minimum size=1cm
+  },
+  subtree/.style  = {
+    isosceles triangle, 
+    draw=black, 
+    align=center, 
+    minimum height=0.5cm,   
+    minimum width=1cm, 
+    shape border rotate=90, 
+    anchor=north
+  }
+}
+
+
+\renewcommand{\chaptername}{Árvore}
 
 
 \author{Prof. Artur Oliveira}
@@ -94,6 +114,18 @@
 % \include{aulas/intro}
 % \include{aulas/aula1}
 % \include{aulas/aula2}
-\include{aulas/aula3}
+% \include{aulas/aula3}
+% \include{aulas/aula4}
+% \include{aulas/aula5}
+% \include{aulas/aula9/aula9}
+% \include{aulas/aula10/aula10}
+\include{aulas/rbt/intro/intro}
+% \include{aulas/rbt/insertion/insertion}
 
+% \section{Remoções}
+% \include{aulas/aula10/av1}
+% \include{aulas/aula10/av2}
+% \include{aulas/aula10/av3}
+% \include{aulas/aula10/av4}
+% \include{aulas/aula10/av5}
 \end{document}

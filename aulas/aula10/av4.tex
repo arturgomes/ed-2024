@@ -1,0 +1,70 @@
+\subsection{Exemplo 4 - Remover 38, 31, 40, 44, 10, 42, 33, 26}
+% gv,label=above:+2
+
+
+\begin{frame}[noframenumbering,plain,fragile] {\secname : \subsecname}
+  Fazer para casa
+  Remover: \textbf{38, 31, 40, 44, 10, 42, 33, 26}
+
+\begin{figure}[!h]
+  \centering
+  \caption{Inserir 33}
+
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+  level 1/.style={sibling distance=15em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=2em, level distance = 3em},
+  level 5/.style={sibling distance=1em, level distance = 3em} ]
+  \node [wv] (r){31}
+  child { node [wv] {19}
+    child { node [wv] {9}
+      child { node [wv] {7}
+        child { node [wv] {1}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [nil] {}}
+      }
+      child { node [wv] {10}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child { node [wv] {30}
+        child { node [wv] {26}
+            child {node [nil] {}}
+            child {node [nil] {}}
+        }
+        child {node [nil] {}}
+    }
+  }
+  child { node [wv] {40}
+    child { node [wv] {35}
+      child { node [wv] {34}
+        child { node [wv] {33}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [nil] {}}
+      }
+      child { node [wv] {38}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+    }
+    child { node [wv] {42}
+      child {node [nil] {}}
+      child { node [wv] {44}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+

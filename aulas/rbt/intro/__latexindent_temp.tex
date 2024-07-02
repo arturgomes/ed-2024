@@ -1,0 +1,2685 @@
+% \chapter{Árvores Rubro-Negras}
+\begin{frame}[fragile]
+  \frametitle{Árvore Rubro-Negra}
+\begin{theorem}
+Uma árvore rubro-negra é uma árvore binária de busca balanceada na 
+qual cada nó interno tem dois filhos. Cada nó interno tem uma cor, 
+tal que:
+
+\begin{itemize}
+\item[0.] Cada nó é preto ou vermelho 
+\item[1.] O nó raiz é sempre preto.
+\item[2.] Todos os nós folha (Null) são pretos.
+% \item[3.] Novas inserções são sempre vermelhas.  
+% \item[4.] Todos os caminhos percorridos na árvore contém o mesmo número de nós pretos (\textbf{\emph{altura-negra}}).
+% \item[5.] Nenhum caminho pode ter dois nós vermelhos consecultivos. 
+% \item[6.] Se um nó é vermelho, então ambos os filhos são pretos. Os ponteiros dos nós folha (representados como quadrados pretos) continuam sendo "nulos" e não carregam nenhum valor.
+\end{itemize}
+\end{theorem}
+
+Precisamos adaptar as operações de inserção e deleção de forma que as 
+propriedades rubro negras sejam mantidas.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Árvore Rubro-Negra (cont)}
+\begin{theorem}
+Uma árvore rubro-negra é uma árvore binária de busca balanceada na 
+qual cada nó interno tem dois filhos. Cada nó interno tem uma cor, 
+tal que:
+
+\begin{itemize}
+% \item[0.] Cada nó é preto ou vermelho 
+% \item[1.] O nó raiz é sempre preto.
+% \item[2.] Todos os nós folha (Null) são pretos.
+\item[3.] Novas inserções são sempre vermelhas.  
+\item[4.] Todos os caminhos percorridos na árvore contém o mesmo número de nós pretos (\textbf{\emph{altura-negra}}).
+\item[5.] Nenhum caminho pode ter dois nós vermelhos consecultivos. 
+\item[6.] Se um nó é vermelho, então ambos os filhos são pretos. Os ponteiros 
+          dos nós folha (representados como quadrados pretos) continuam sendo "nulos" e não carregam nenhum valor.
+\end{itemize}
+\end{theorem}
+
+Precisamos adaptar as operações de inserção e deleção de forma que as 
+propriedades rubro negras sejam mantidas.
+\end{frame}
+
+\section{Correção de balanceamento de altura-negra}
+\label{caso1}
+
+\begin{frame}[fragile]
+  \frametitle{Caso 1 - O tio de \textbf{a}, (\textbf{d}), é vermelho}
+TVC - tio-vermelho-colorir 
+Então como a gente faz pra corrigir a quebra de invariante (coloração rubro-negra?) 
+
+É o que vamos ver agora!
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\caption{Antes}
+\begin{tikzpicture}[->,>=stealth',
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [bbv] (r){c}
+child [color=black] { node [brv] {b}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] { node [brv] {a}
+          child [color=black] {node [bwv] {x}}
+          child [color=black] {node [bwv] {y}}
+        }
+      }
+child [color=black] { node [brv] {d}
+        child [color=black] {node [bwv] {p}}
+        child [color=black] {node [bwv] {q}}
+};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\caption{Depois}
+  \begin{tikzpicture}[->,>=stealth',
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [brv] (r){c}
+child [color=black] { node [bbv] {b}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] { node [brv] {a}
+          child [color=black] {node [bwv] {x}}
+          child [color=black] {node [bwv] {y}}
+        }
+      }
+child [color=black] { node [bbv] {d}
+        child [color=black] {node [bwv] {p}}
+        child [color=black] {node [bwv] {q}}
+};
+\end{tikzpicture}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Caso 2 - O tio de \textbf{a}, (\textbf{d}), é preto e \textbf{a} é filho direito}
+TPR - tio-preto-rotaciona
+% \pagebreak
+\begin{itemize}
+  \item Rotação à esquerda do pai de \textbf{a}, (\textbf{b}), ao redor de \textbf{a}
+  \item Continua para o \textbf{Caso 3}
+\end{itemize}
+
+\begin{figure}[H]
+  \begin{minipage}[t]{0.48\textwidth}
+  \caption{Antes}
+\begin{tikzpicture}[->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=6em, level distance = 3em},
+  level 2/.style={sibling distance=2em, level distance = 3em},
+  level 3/.style={sibling distance=1em, level distance = 3em}
+]
+\node [bbv] (r){c}
+child [color=black] { node [brv] {b}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] { node [brv] {a}
+          child [color=black] {node [bwv] {x}}
+          child [color=black] {node [bwv] {y}}
+        }
+      }
+child [color=black] { node [bbv] {d}
+        child [color=black] {node [bwv] {p}}
+        child [color=black] {node [bwv] {q}}
+};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+  % \centering
+  \caption{Depois}
+\begin{tikzpicture}[->,>=stealth',
+   % level/.style={sibling distance = 20em, level distance = 3em},
+   level 1/.style={sibling distance=10em, level distance = 3em},
+  level 2/.style={sibling distance=4em, level distance = 3em},
+  level 3/.style={sibling distance=2em, level distance = 3em},
+  ] 
+\node [bbv] (r){c}
+child [color=black] { node [brv] {a}
+        child [color=black] { node [brv] {b}
+          child [color=black] {node [bwv] {y}}
+          child [color=black] {node [bwv] {x}}
+        }
+        child [color=black] {node [bwv] {z}}
+      }
+child [color=black] { node [bbv] {d}
+        child [color=black] {node [bwv] {p}}
+        child [color=black] {node [bwv] {q}}
+};
+\end{tikzpicture}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\subsection{}\label{caso3}
+\begin{frame}[fragile]
+  \frametitle{Caso 3 - O tio de \textbf{a}, (\textbf{d}), é preto e \textbf{a} é filho esquerdo }
+
+\begin{itemize}
+  \item Rotação à direita de \textbf{c}, ao redor de \textbf{b}
+  \item Troque as cores entre o pai de \textbf{a}, (\textbf{b}) e seu novo irmão (\textbf{c}).
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.3\textwidth}
+    \caption{Antes}
+  \begin{tikzpicture}[->,>=stealth',
+     % level/.style={sibling distance = 20em, level distance = 3em},
+     level 1/.style={sibling distance=6em, level distance = 3em},
+     level 2/.style={sibling distance=2em, level distance = 3em},
+     level 3/.style={sibling distance=1em, level distance = 3em}
+    ] 
+  \node [bbv] (r){c}
+  child [color=black] { node [brv] {a}
+          child [color=black] { node [brv] {b}
+            child [color=black] {node [bwv] {y}}
+            child [color=black] {node [bwv] {x}}
+          }
+          child [color=black] {node [bwv] {z}}
+        }
+  child [color=black] { node [bbv] {d}
+          child [color=black] {node [bwv] {p}}
+          child [color=black] {node [bwv] {q}}
+  };
+  \end{tikzpicture}
+
+\end{minipage}
+\hfill
+\begin{minipage}{.3\textwidth}
+  \caption{Durante}
+\begin{tikzpicture}[->,>=stealth',
+   % level/.style={sibling distance = 20em, level distance = 3em},
+   level 1/.style={sibling distance=6em, level distance = 3em},
+     level 2/.style={sibling distance=2em, level distance = 3em},
+     level 3/.style={sibling distance=1em, level distance = 3em}
+  ] 
+\node [brv] (r){b}
+child [color=black] { node [brv] {a}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] {node [bwv] {x}}
+      }
+child [color=black] { node [bbv] {c}
+        child [color=black] {node [bwv] {y}}
+        child [color=black] { node [bbv] {d}
+          child [color=black] {node [bwv] {p}}
+          child [color=black] {node [bwv] {q}}
+        }
+};
+\end{tikzpicture}
+
+\end{minipage}
+\hfill
+\begin{minipage}{.3\textwidth}
+  \centering
+  \caption{Depois}
+\begin{tikzpicture}[->,>=stealth',
+   % level/.style={sibling distance = 20em, level distance = 3em},
+   level 1/.style={sibling distance=6em, level distance = 3em},
+   level 2/.style={sibling distance=2em, level distance = 3em},
+   level 3/.style={sibling distance=1em, level distance = 3em}
+  ] 
+\node [bbv] (r){b}
+child [color=black] { node [brv] {a}
+        child [color=black] {node [bwv] {z}}
+        child [color=black] {node [bwv] {x}}
+      }
+child [color=black] { node [brv] {c}
+        child [color=black] {node [bwv] {y}}
+        child [color=black] { node [bbv] {d}
+          child [color=black] {node [bwv] {p}}
+          child [color=black] {node [bwv] {q}}
+        }
+};
+\end{tikzpicture}
+
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Caso 2 - O tio de \textbf{a}, (\textbf{d}), é preto e \textbf{a} é filho direito}
+  TPR - tio-preto-rotaciona
+  % \pagebreak
+  \begin{itemize}
+    \item Rotação à esquerda do pai de \textbf{a}, (\textbf{b}), ao redor de \textbf{a}
+    \item Continua para o \textbf{Caso 3}
+  \end{itemize}
+  
+  \begin{figure}[H]
+    \begin{minipage}[t]{0.48\textwidth}
+    \caption{Antes}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 20em, level distance = 3em},
+    level 1/.style={sibling distance=6em, level distance = 3em},
+    level 2/.style={sibling distance=2em, level distance = 3em},
+    level 3/.style={sibling distance=1em, level distance = 3em}
+  ]
+  \node [bbv] (r){c}
+  child [color=black] { node [brv] {b}
+          child [color=black] {node [bwv] {z}}
+          child [color=black] { node [brv] {a}
+            child [color=black] {node [bwv] {x}}
+            child [color=black] {node [bwv] {y}}
+          }
+        }
+  child [color=black] { node [bbv] {d}
+          child [color=black] {node [bwv] {p}}
+          child [color=black] {node [bwv] {q}}
+  };
+  \end{tikzpicture}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\linewidth}
+    % \centering
+    \caption{Depois}
+  \begin{tikzpicture}[->,>=stealth',
+     % level/.style={sibling distance = 20em, level distance = 3em},
+     level 1/.style={sibling distance=10em, level distance = 3em},
+    level 2/.style={sibling distance=4em, level distance = 3em},
+    level 3/.style={sibling distance=2em, level distance = 3em},
+    ] 
+  \node [bbv] (r){c}
+  child [color=black] { node [brv] {a}
+          child [color=black] { node [brv] {b}
+            child [color=black] {node [bwv] {y}}
+            child [color=black] {node [bwv] {x}}
+          }
+          child [color=black] {node [bwv] {z}}
+        }
+  child [color=black] { node [bbv] {d}
+          child [color=black] {node [bwv] {p}}
+          child [color=black] {node [bwv] {q}}
+  };
+  \end{tikzpicture}
+  \end{minipage}
+  \end{figure}
+  \end{frame}
+  
+  \section{Construindo uma árvore rubro-negra do zero}
+  \begin{frame}[fragile]
+\frametitle{\secname}
+
+Vamos usar os exemplos que fizemos nas atividades passadas (post do dia 10/03), as que vocês submeteram, ok?
+Usaremos o Conjunto 1: 3, 46, 41, 11, 42, 14, 10, 5, 24, 20, 31, 44, 48, 39, 21.
+
+Começamos pelo número 3.
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 3}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){3}
+child [color=black] {node [nil] {}}
+child [color=black] {node [nil] {}}
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+
+Daí inserimos o número 46.
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 46}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){3}
+child [color=black] {node [nil] {}}
+child [color=black] {node [rv] {46}}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+E inserimos o número 41. Eita! Dois vermelhos consecultivos.
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 41}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){3}
+child [color=black] {node [nil] {}}
+child [color=black] { node [rv] {46}
+  child [color=black] { node [rv] {41}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Observe que aqui temos o caso 2 simétrico (invertido). No caso, \textbf{TPR}.
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 41 - Correção (caso 2)}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){3}
+child [color=black] {node [nil] {}}
+child [color=black] { node [rv] {41}
+  child [color=black] {node [nil] {}}
+  child [color=black] { node [rv] {46}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+
+\end{frame}
+\begin{frame}[fragile]
+
+O que faremos então?
+\begin{itemize}
+  \item[1] Rotação simples à esquerda de 3 ao redor de 41 (RSE 3 AR 41).
+  \item[2] ...
+\end{itemize}
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 41 - Correção (caso 3 - durante)}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [rv] (r){41}
+child [color=black] { node [bv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+child [color=black] { node [rv] {46}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+
+E agora? O que faremos então?
+\begin{itemize}
+  \item[1] Rotação simples à esquerda de 3 ao redor de 41 (RSE 3 AR 41).
+  \item[2] Trocar as cores do pai de 46 (41) com o (tio que agora é irmão) de 46 (3)
+\end{itemize}
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 41 - Correção (caso 3 - durante)}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){41}
+child [color=black] { node [rv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+child [color=black] { node [rv] {46}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+Continuando... Inserção de 11
+\end{frame}
+\begin{frame}[fragile]
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 11}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){41}
+child [color=black] { node [rv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] { node [rv] {11}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {46}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Aqui temos o caso 1, ok? Tio vermelho, colorir.
+\begin{itemize}
+  \item Primeiro a gente inverte as cores do pai, tio e avô de 11
+  \item ...
+\end{itemize}
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 11 - Caso 1 - inverte as cores}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [rv] (r){41}
+child [color=black] { node [bv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] { node [rv] {11}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {46}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+\begin{itemize}
+  \item Primeiro a gente inverte as cores do pai, tio e avô de 11
+  \item E como sabemos, o nó raiz nunca pode ser vermelho, nós recolorimos ele para preto, também.
+\end{itemize}
+
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 11 - Caso 1 - inverte as cores}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){41}
+child [color=black] { node [bv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] { node [rv] {11}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {46}
+  child [color=black] {node [nil] {}}
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Até aqui, a árvore está balanceada, correto? Vamos continuar, inserindo 42.
+
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 42}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){41}
+child [color=black] { node [bv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] { node [rv] {11}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {46}
+  child [color=black] { node [rv] {42}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Tudo certo, ainda, né? Mesma \textbf{altura-negra} para todos os nós. Partxiu bagunçar a árvore, inserindo o 14?
+
+
+\begin{figure}[H]
+\caption{Conjunto 1 - Inserir 14}
+ 
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){41}
+child [color=black] { node [bv] {3}
+  child [color=black] {node [nil] {}}
+  child [color=black] { node [rv] {11}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {14}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+}
+child [color=black] { node [bv] {46}
+  child [color=black] { node [rv] {42}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+Veja, aqui a gente tem o caso 3 simétrico.
+
+\begin{figure}[H]
+  
+  \centering
+  \caption{Conjunto 1 - Inserir 14 - Caso 3 - Durante}
+  \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=14em, level distance = 3em},
+  level 2/.style={sibling distance=6em, level distance = 3em},
+  level 3/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){41}
+child [color=black] { node [rv] {11}
+    child [color=black] { node [bv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {14}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+}
+child [color=black] { node [bv] {46}
+  child [color=black] { node [rv] {42}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+  child [color=black] {node [nil] {}}
+}
+  % child [color=black] { node [brv] {13}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] {node [bwv] {...}}
+  % }
+  % child [color=black] { node [brv] {25}
+  %   child [color=black] {node [bwv] {...}}
+  %   child [color=black] { node [bbv] {30}
+  %     child [color=black] {node [bwv] {...}}
+  %     child [color=black] {node [bwv] {...}}
+  %   }
+  % }
+;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Agora é só inverter as cores de 11 e 3. Moleza, né?
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 14 - Caso 3 - Depois}
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=14em, level distance = 3em},
+      level 2/.style={sibling distance=6em, level distance = 3em},
+      level 3/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [bv] {11}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+De boa. Agora vamos inserir o 10.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 10}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=14em, level distance = 3em},
+      level 2/.style={sibling distance=6em, level distance = 3em},
+      level 3/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [bv] {11}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+        }
+        child [color=black] { node [rv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Aqui a gente tem o Caso 1, ok? Tio vermelho, colorir.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 10 - TVC}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=14em, level distance = 3em},
+      level 2/.style={sibling distance=6em, level distance = 3em},
+      level 3/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+        child [color=black] { node [bv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+        }
+        child [color=black] { node [bv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Vamos inserir o numero 5
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 5}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=14em, level distance = 3em},
+      level 2/.style={sibling distance=6em, level distance = 3em},
+      level 3/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+        child [color=black] { node [bv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {10}
+          child [color=black] { node [rv] {5}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+            child [color=black] {node [nil] {}}
+          }
+        }
+        child [color=black] { node [bv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+E aí? Tio preto, rotaciona né? Caso 2 seguido do caso 3.
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 5 - Caso 2}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=5em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+        child [color=black] { node [bv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {5}
+            child [color=black] {node [nil] {}}
+            child [color=black] { node [rv] {10}
+              child [color=black] {node [nil] {}}
+              child [color=black] {node [nil] {}}
+            }
+          }
+        }
+        child [color=black] { node [bv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+  Caso 3, Rotação à esquerda de 3, ao redor de 5. 
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 5 - Caso 3 - Durante}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=5em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [rv] {5}
+        child [color=black] { node [bv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {14}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+  Em seguida, troca as cores do irmão com o pai.
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 5 - Caso 3 - Depois}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {14}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+  Agora vamos inserir o que? Ah, o 24. Esse vai ser fácil, pois ao inserir, 
+  ele é vermelho, e tem pai preto. A altura-negra continua a mesma. 
+  Tudo certo, né?
+
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 24}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {14}
+        child [color=black] {node [nil] {}}
+        child [color=black] { node [rv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+  Inserindo o 20.
+
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 20}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {14}
+        child [color=black] {node [nil] {}}
+        child [color=black] { node [rv] {24}
+          child [color=black] { node [rv] {20}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+          child [color=black] {node [nil] {}}
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Mais uma vez, caso 2 + caso 3. Tem esses 3 passos!
+\begin{itemize}
+  \item[P1] Rotação simples à direita de 24 ao redor de 20.
+  \item[P2] Rotação simples à esquerda de 14 ao redor de 20.
+  \item[P3] Inverter as cores de 20 e 14.
+\end{itemize}
+
+Vamos lá, P1
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 20 - P1}
+  
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {14}
+        child [color=black] {node [nil] {}}
+        child [color=black] { node [rv] {20}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {24}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Vamos para o passo 2 (P2), rotação à esquerda de 14 ao redor de 20.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 20 - P2}
+    \tiny
+    \centering
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [rv] {20}
+        child [color=black] { node [bv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+
+\end{frame}
+\begin{frame}[fragile]
+
+Terminamos com o passo 2 (P3), invertendo as cores de 14 e 20. 
+% Agora tá como tudo deveria ser. O Thanos agradece.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 20 - p3}
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {20}
+        child [color=black] { node [rv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Agora vamos inserir o 31
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31}
+  \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [bv] {20}
+        child [color=black] { node [rv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {31}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+  E aí? Tio vermelho, colorir. Fácil, né?
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31}
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] { node [bv] {5}
+        child [color=black] { node [rv] {3}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [rv] {10}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+      }
+      child [color=black] { node [rv] {20}
+        child [color=black] { node [bv] {14}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+        }
+        child [color=black] { node [bv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] { node [rv] {31}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+          }
+        }
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+    
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+  Só que não. Agora temos novamente o caso 2, que implica em caso 3. 
+  Primeiro eu vou isolar apenas os nós relevantes para facilitar a visualização.
+ 
+ 
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31 - Passos para caso 2 e caso 3}
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {11}
+      child [color=black] {node [bwv] {...}}
+      child [color=black] { node [rv] {20}
+        child [color=black] {node [bwv] {...}}
+        child [color=black] {node [bwv] {...}} 
+      }
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [bwv] {...}}
+      child [color=black] {node [bwv] {...}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+    
+  \end{figure}
+
+\end{frame}
+\begin{frame}[fragile]
+
+ 
+  Então faremos os três passos a seguir:
+\begin{itemize}
+  \item[P1] Rotação de 11 à esquerda de 20
+  \item[P2] Rotação de 41 à direita de 20
+  \item[P3] Inverter cores de 20 e 41.
+\end{itemize}
+
+
+ 
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31 - P1}
+  % \begin{minipage}{.5\textwidth}
+  % \begin{subfigure}{\textwidth}
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){41}
+    child [color=black] { node [rv] {20}
+    child [color=black] { node [rv] {11}
+        child [color=black] {node [bwv] {...}}
+        child [color=black] {node [bwv] {...}} 
+      }
+    child [color=black] {node [bwv] {...}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [bwv] {...}}
+      child [color=black] {node [bwv] {...}}
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  % \end{subfigure}
+    % \end{minipage}
+    % \hfill
+    % \begin{minipage}{.5\textwidth}
+    %   % \begin{subfigure}
+    %     \includegraphics[width=\textwidth]{qface.jpg}
+    %   % \end{subfigure}
+    % \end{minipage}
+  \end{figure}
+
+\end{frame}
+\begin{frame}[fragile]
+
+ 
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31 - P2}
+  % \begin{minipage}{.5\textwidth}
+  % \begin{subfigure}{\textwidth}
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [rv] (r){20}
+    child [color=black] { node [rv] {11}
+        child [color=black] {node [bwv] {...}}
+        child [color=black] {node [bwv] {...}} 
+      }
+    child [color=black] { node [bv] {41}
+      child [color=black] {node [bwv] {...}}
+      child [color=black] { node [bv] {46}
+        child [color=black] {node [bwv] {...}}
+        child [color=black] {node [bwv] {...}}
+      }
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  % \end{subfigure}
+    % \end{minipage}
+    % \hfill
+    % \begin{minipage}{.5\textwidth}
+    %   % \begin{subfigure}
+    %     \includegraphics[width=\textwidth]{qface.jpg}
+    %   % \end{subfigure}
+    % \end{minipage}
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Agora é recolorir. Lembrando que nó raiz é sempre preto.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31 - P3}
+  % \begin{minipage}{.5\textwidth}
+  % \begin{subfigure}{\textwidth}
+    \centering
+    \tiny
+    \begin{tikzpicture}[
+      % 
+      ->,>=stealth',
+      % level/.style={sibling distance = 20em, level distance = 3em},
+      level 1/.style={sibling distance=18em, level distance = 3em},
+      level 2/.style={sibling distance=8em, level distance = 3em},
+      level 3/.style={sibling distance=4em, level distance = 3em},
+      level 4/.style={sibling distance=3em, level distance = 3em}]
+    \node [bv] (r){20}
+    child [color=black] { node [rv] {11}
+        child [color=black] {node [bwv] {...}}
+        child [color=black] {node [bwv] {...}} 
+      }
+    child [color=black] { node [rv] {41}
+      child [color=black] {node [bwv] {...}}
+      child [color=black] { node [bv] {46}
+        child [color=black] {node [bwv] {...}}
+        child [color=black] {node [bwv] {...}}
+      }
+    }
+      % child [color=black] { node [brv] {13}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] {node [bwv] {...}}
+      % }
+      % child [color=black] { node [brv] {25}
+      %   child [color=black] {node [bwv] {...}}
+      %   child [color=black] { node [bbv] {30}
+      %     child [color=black] {node [bwv] {...}}
+      %     child [color=black] {node [bwv] {...}}
+      %   }
+      % }
+    ;
+    \end{tikzpicture}
+  % \end{subfigure}
+    % \end{minipage}
+    % \hfill
+    % \begin{minipage}{.5\textwidth}
+    %   % \begin{subfigure}
+    %     \includegraphics[width=\textwidth]{qface.jpg}
+    %   % \end{subfigure}
+    % \end{minipage}
+  \end{figure}
+
+\end{frame}
+\begin{frame}[fragile]
+
+  Vamos voltar toda a árvore?
+
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 31 - Finalizado}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {46}
+    child [color=black] { node [rv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] {node [nil] {}}
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Ainda temos que inserir o 44, 48, 39 e 21. Vamos lá, começamos pelo 44.
+
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 44}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {46}
+    child [color=black] { node [rv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {44}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+    child [color=black] {node [nil] {}}
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Caso 2 + caso 3, certo? Então faremos os três passos a seguir:
+\begin{itemize}
+  \item[P1] Rotação de 42 à esquerda de 44
+  \item[P2] Rotação de 46 à direita de 44
+  \item[P3] Inverter cores de 44 e 46.
+\end{itemize}
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 44 - Correção de balanceamento P1}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {46}
+    child [color=black] { node [rv] {44}
+      child [color=black] { node [rv] {42}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] {node [nil] {}}
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Rotação de 46 à direita de 44.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 44 - Correção de balanceamento P2}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [rv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+
+Inverter as cores de 46 e 44.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 44 - Correção de balanceamento P3}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {44}
+    child [color=black] { node [rv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Tudo balanceado né? Inseriremos o 48 agora.
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 48}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {44}
+    child [color=black] { node [rv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Aqui beleza, caso 1. Tio vermelho, colorir.
+
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 48}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [rv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [rv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Tá achando que vai ter que balancear tudo de novo? Não!!! Olha que o tio agora é 11, e ele é vermelho. Então é só inverter as cores novamente do 11, 20 e 41. Só que como o 20 é raiz, ele vai ser sempre preto.
+
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 48}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [bv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Vamos inserir o 39.
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 39}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [bv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {41}
+  child [color=black] { node [bv] {24}
+    child [color=black] {node [nil] {}}
+    child [color=black] { node [rv] {31}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {39}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Veja que vai ter um tio preto, e se encaixa direto no caso 3. Então primeiramente vamos fazer (P1) uma rotação simples à esquerda de 24 ao redor de 31. Depois (P2) inverter as cores de 31 e 24.
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 39 - P1}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [bv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {41}
+  child [color=black] { node [rv] {31}
+      child [color=black] { node [bv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+      }
+      child [color=black] { node [rv] {39}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+Agora passo 2
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 39 - P2}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [bv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {41}
+  child [color=black] { node [bv] {31}
+      child [color=black] { node [rv] {24}
+          child [color=black] {node [nil] {}}
+          child [color=black] {node [nil] {}}
+      }
+      child [color=black] { node [rv] {39}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+
+Finalmente, vamos inserir o 21.
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 21}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [bv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {41}
+  child [color=black] { node [bv] {31}
+      child [color=black] { node [rv] {24}
+        child [color=black] { node [rv] {21}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+        }
+          child [color=black] {node [nil] {}}
+      }
+      child [color=black] { node [rv] {39}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\begin{frame}[fragile]
+
+
+Tio vermelho, colorir!
+
+
+\begin{figure}[H]
+  \caption{Conjunto 1 - Inserir 21 - Caso 1}
+    \centering
+    \tiny
+\begin{tikzpicture}[
+  % 
+  ->,>=stealth',
+  % level/.style={sibling distance = 20em, level distance = 3em},
+  level 1/.style={sibling distance=18em, level distance = 3em},
+  level 2/.style={sibling distance=8em, level distance = 3em},
+  level 3/.style={sibling distance=4em, level distance = 3em},
+  level 4/.style={sibling distance=3em, level distance = 3em}]
+\node [bv] (r){20}
+child [color=black] { node [bv] {11}
+  child [color=black] { node [bv] {5}
+    child [color=black] { node [rv] {3}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [rv] {10}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+  }
+  child [color=black] { node [bv] {14}
+    child [color=black] {node [nil] {}}
+    child [color=black] {node [nil] {}}
+  }
+}
+child [color=black] { node [bv] {41}
+  child [color=black] { node [rv] {31}
+      child [color=black] { node [bv] {24}
+        child [color=black] { node [rv] {21}
+            child [color=black] {node [nil] {}}
+            child [color=black] {node [nil] {}}
+        }
+          child [color=black] {node [nil] {}}
+      }
+      child [color=black] { node [bv] {39}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+  }
+  child [color=black] { node [rv] {44}
+    child [color=black] { node [bv] {42}
+      child [color=black] {node [nil] {}}
+      child [color=black] {node [nil] {}}
+    }
+    child [color=black] { node [bv] {46}
+      child [color=black] {node [nil] {}}
+      child [color=black] { node [rv] {48}
+        child [color=black] {node [nil] {}}
+        child [color=black] {node [nil] {}}
+      }
+    }
+  }
+}
+; 
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+\section*{Exercícios}
+\begin{frame}[fragile]
+
+
+Ufa! Agora, pegue seus exercícios da AVL e compara se essa árvore tá parecida com a que você fez.
+
+
+Agora pegue aquelas mesmas árvores, e faça como árvores rubro-negra. Submissão online (Google Classroom) dia 14/04 às 23:59.
+
+\begin{itemize}
+  \item Conjunto 2: 4, 39, 30, 27, 41, 46, 47, 10, 31, 8, 17, 12, 50, 2, 14
+  \item Conjunto 3: 24, 50, 44, 15, 43, 35, 40, 14, 48, 45, 36, 21, 37, 32, 31
+  \item Conjunto 4: 30, 9, 19, 42, 7, 10, 44, 40, 31, 38, 35, 34, 26, 33, 1
+  \item Conjunto 5: 6, 29, 5, 9, 16, 28, 49, 36, 22, 39, 27, 37, 1, 4, 48
+\end{itemize}
+\end{frame}

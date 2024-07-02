@@ -1,0 +1,201 @@
+\section{Arvores AVL}
+\subsection{Introdução}
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+
+  \begin{itemize}
+  \item A árvore AVL (nomeada por seus inventores Adelson-Velskii e Landis) deve 
+  ser vista como um BST com a seguinte propriedade adicional: 
+  \begin{itemize}
+  \item Para cada nó, as alturas de suas subárvores esquerda e direita diferem em no máximo 1.
+  \end{itemize}
+  \item Para concretizar a árvore AVL, precisamos definir uma propriedade 
+  constante para todas os nós.
+\end{itemize}
+\begin{equation}
+\forall n: Node \bullet~|~altura(n.left) - altura(n.right)~| \leq 1
+\end{equation}
+
+  
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+
+  \begin{itemize}
+  \item Contanto que a árvore se mantenha esta propriedade, se a árvore contiver $n$ 
+  nós, então ela terá uma profundidade de no máximo $O (log~n)$. 
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  \begin{itemize}
+
+  \item Como resultado, a busca por qualquer nó custará $O (log~n)$, e 
+  se as atualizações puderem ser feitas em tempo proporcional à profundidade 
+  do nó inserido ou excluído, então as atualizações também 
+  custarão $O (log~n)$, mesmo no pior caso.
+  \item Lembrando que $O (log~n) < O (n)$ 
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\subsection{O que muda da BST?}
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+
+  \begin{itemize}
+  \item A chave para fazer a árvore AVL funcionar é alterar as rotinas de 
+  inserção e exclusão de modo a manter a propriedade de balanceamento. 
+  \item Obviamente, para ser prático, devemos ser capazes de implementar as 
+  rotinas de atualização revisadas em tempo $\Theta (log~n)$.
+  \item Isso significa dizer, que o crescimento da complexidade em 
+  relação ao tempo tem que ser exatamente $(log~n)$
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 5}
+  
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=15em, level distance = 3em},
+    level 2/.style={sibling distance=8em, level distance = 3em},
+    level 3/.style={sibling distance=5em, level distance = 3em},
+    level 4/.style={sibling distance=3em, level distance = 3em},
+    level 5/.style={sibling distance=2em, level distance = 3em} ]
+    \node [wv] (r){37}
+    child { node [wv] {24}
+      child { node [gv] {7}
+        child { node [gv] {2}
+          child {node [nil] {}}
+          child { node [rv] {5}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child {node [nil] {}}
+      }
+      child { node [wv] {32}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child { node [wv] {42}
+      child { node [wv] {40}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {45}
+        child {node [nil] {}}
+        child { node [wv] {120}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%% 
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\section{Desbalanceamento}
+\subsection{Na AVL}
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  \begin{itemize}
+  \item Considere o que acontece quando inserimos um nó com valor de chave 5, 
+  conforme mostrado na Figura do slide anterior. 
+  \item A árvore à esquerda atende aos requisitos de balanceamento da árvore AVL. 
+  \item Após a inserção, dois nós não atendem mais aos requisitos. 
+  \item Como a árvore original atendeu ao requisito de balanceamento, os 
+  nós na nova árvore só podem ser desbalanceados por uma \textbf{diferença de altura} de no 
+  \textbf{máximo $\pm~2$} nas subárvores. 
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+
+  \begin{figure}[!h]
+    \centering
+    \caption{Inserir 5}
+  
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=15em, level distance = 3em},
+    level 2/.style={sibling distance=8em, level distance = 3em},
+    level 3/.style={sibling distance=5em, level distance = 3em},
+    level 4/.style={sibling distance=3em, level distance = 3em},
+    level 5/.style={sibling distance=2em, level distance = 3em}]
+    \node [wv] (r){37}
+    child { node [wv] {24}
+      child { node [gv,label=above:-2] {7}
+        child { node [gv,label=above:+1] {2}
+          child {node [nil] {}}
+          child { node [rv,label=above:0] {5}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+        child {node [nil] {}}
+      }
+      child { node [wv] {32}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child { node [wv] {42}
+      child { node [wv] {40}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child { node [wv] {45}
+        child {node [nil] {}}
+        child { node [wv] {120}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}[noframenumbering,plain,fragile]{\secname : \subsecname}
+  \begin{itemize}
+  \item O desbalanceamento é causado pela diferença na altura dos nós
+  \item Na aula passada vimos que a altura é calculada tomando como referência uma linha imaginária abaixo da árvore
+  \item Para o nó mais inferior desbalanceado, chame-o de $S$, onde podemos ter 4 casos:
+    \begin{itemize}
+      \item[1.] O nó \textbf{filho} está no \textbf{filho esquerdo} da \emph{sub-árvore esquerda} de $S$.
+      \item[2.] O nó \textbf{filho} está no \textbf{filho direito} da \emph{sub-árvore direita} de $S$.
+      \item[3.] O nó \textbf{filho} está no \textbf{filho direito} da \emph{sub-árvore esquerda} de $S$. 
+      \item[4.] O nó \textbf{filho} está no \textbf{filho esquerdo} da \emph{sub-árvore direita} de $S$. 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%
+%%% frame %%%%%%
+%%%%%%%%%%%%%%%%
+\input{rotacoes.tex}
+\input{av1.tex}
+\input{av2.tex}
+\input{av3.tex}
+\input{av4.tex}
+\input{av5.tex}

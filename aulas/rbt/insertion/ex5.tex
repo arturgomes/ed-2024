@@ -1,0 +1,49 @@
+
+\section{ex}
+
+
+\begin{frame}[fragile]
+  Conjunto 5: 18, 5, 6, 13, 12, 15, 4
+  \begin{figure}[!h]
+    \centering
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){12}
+  child {node [brv] {6}
+    child {node [bbv] {4}
+      child {node [brv] {1}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [brv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [bbv] {11}
+      child {node [brv] {8}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [nil] {}}
+    }
+  }
+  child {node [bbv] {15}
+    child {node [brv] {13}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {16}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  };
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+

@@ -1,0 +1,75 @@
+\documentclass[legalpaper, 10pt, addpoints]{exam}
+\usepackage[top=1in, bottom=1in, left=0.5in, right=0.5in]{geometry}
+
+
+% Nouvelle is a green and red alternative to the chameleon color theme.
+% \setbeamercovered{invisible}
+% \usecolortheme{nouvelle}%
+
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+%---------------------------------------------------------------------------------
+% packages
+%---------------------------------------------------------------------------------
+\usepackage{verbatim}
+\usepackage{preview}
+\usepackage{xcolor, soul}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tkz-berge}
+\usepackage{tkz-graph}
+% \usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,enumerate,ifthen}
+
+% Define um novo ambiente 'mysmallverbatim' que ajusta o tamanho da fonte para 'small'
+\DefineVerbatimEnvironment%
+{mysmallverbatim}{Verbatim}
+{fontsize=\small}
+% \usepackage[pdftex]{graphicx}  
+
+
+
+\sethlcolor{lightgray}
+\newcommand{\mycode}[1]{\textcolor{red}{\hl{\texttt{#1}}}}
+% \newcommand{\mycode}[1]{\textcolor{red}{\texttt{#1}}}
+\PreviewEnvironment{tikzpicture}
+
+\usetikzlibrary{positioning,shapes.geometric}
+\usetikzlibrary{trees,arrows,positioning, calc}
+
+\usetikzlibrary{backgrounds}
+\tikzstyle{wv}  =[draw,fill=white, circle,minimum size=18pt,inner sep=0pt, text=black]
+\tikzstyle{gv}  =[draw,fill=gray, circle,minimum size=18pt,inner sep=0pt, text=black]
+\tikzstyle{rv}  =[draw,fill=red, circle,minimum size=18pt,inner sep=0pt, text=white]
+\tikzstyle{bv}  =[draw,fill=black, circle,minimum size=18pt,inner sep=0pt, text=white]
+% \tikzstyle{nil} =[draw,isosceles triangle,
+% isosceles triangle apex angle=90, draw=black, minimum size=18pt, inner sep=0pt, text=Black]
+\tikzstyle{nil} =[draw,rectangle, draw=black, minimum width=0.5em, minimum height=0.5em]
+\tikzstyle{db}  =[draw,rectangle, fill=black, minimum width=2em, minimum height=2em]
+
+
+
+
+% \renewcommand{\chaptername}{Árvore}
+\pointpoints{ponto}{pontos}
+\bracketedpoints
+\author{Prof. Artur Oliveira}
+% \institute{Sistemas de Informação - CPAN/UFMS}
+
+% \date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\include{provas/prova1/prova1}
+
+\end{document}

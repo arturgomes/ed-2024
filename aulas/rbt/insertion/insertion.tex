@@ -1,0 +1,721 @@
+\title{Inserção na Rubro Negra}
+\date{\today}
+\frame{\titlepage}
+
+
+\begin{frame}[fragile]
+
+  \begin{figure}[!h]
+    \centering
+    \caption{Insert 3}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){3}
+  child {node [nil] {}}
+  child {node [nil] {}}
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{figure}[!h]
+    \centering
+    \caption{Insert 1 - novos nós vermelhos}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){3}
+  child {node [brv] {1}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [nil] {}}
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{figure}[!h]
+    \centering
+    \caption{Insert 5 - novos nós vermelhos}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){3}
+  child {node [brv] {1}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [brv] {5}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{itemize}
+  \item Dois nós vermelhos consecultivos
+  \item Tio vermelho, inverte cores
+\end{itemize}
+  \begin{figure}[!h]
+    \centering
+    \caption{Insert 7 - novos nós vermelhos}
+  % \begin{preview}
+  \begin{tikzpicture}[->,>=stealth',
+    % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+    level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+    level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+    level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+    level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+  \node [bbv] (r){3}
+  child {node [brv] {1}
+    child {node [nil] {}}
+    child {node [nil] {}}
+  }
+  child {node [brv] {5}
+    child {node [nil] {}}
+    child {node [brv] {7}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+  }
+  ;
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio vermelho, inverte cores
+  \end{itemize}
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 7 - novos nós vermelhos}
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [brv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [bbv] {5}
+      child {node [nil] {}}
+      child {node [brv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+  
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio vermelho, inverte cores
+    \item Raiz sempre preta - corrigir
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 7 - novos nós vermelhos}
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [bbv] {5}
+      child {node [nil] {}}
+      child {node [brv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto, rotaciona
+    \item RSD 7 AR 6 + RSD 5 AR 6
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 6}
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [bbv] {5}
+      child {node [nil] {}}
+      child {node [brv] {7}
+        child {node [brv] {6}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [nil] {}}
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto, rotaciona
+    \item RSD 7 AR 6 + RSD 5 AR 6
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 6}
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [brv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto, rotaciona
+    \item RSD 7 AR 6 + RSD 5 AR 6
+    \item Após a rotação corrigir as cores
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 6}
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [bbv] {6}
+      child {node [brv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [brv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio vermelho, inverte cor
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 8} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [bbv] {6}
+      child {node [brv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [brv] {7}
+        child {node [nil] {}}
+        child {node [brv] {8}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio vermelho, inverte cor
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 8} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {7}
+        child {node [nil] {}}
+        child {node [brv] {8}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto, rotaciona
+    \item RSE 7 AR 8
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 9} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {7}
+        child {node [nil] {}}
+        child {node [brv] {8}
+          child {node [nil] {}}
+          child {node [brv] {9}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto, rotaciona
+    \item RSE 7 AR 8
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 9} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [brv] {8}
+        child {node [bbv] {7}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [brv] {9}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto, rotaciona
+    \item RSE 7 AR 8
+    \item Inverte cores do pai (8) com o avô (7)
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 9} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {8}
+        child {node [brv] {7}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [brv] {9}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio vermelho, inverte cor
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 10} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {8}
+        child {node [brv] {7}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [brv] {9}
+          child {node [nil] {}}
+          child {node [brv] {10}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Dois nós vermelhos consecultivos
+    \item Tio preto rotaciona
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 10} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){3}
+    child {node [bbv] {1}
+      child {node [nil] {}}
+      child {node [nil] {}}
+    }
+    child {node [brv] {6}
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [brv] {8}
+        child {node [bbv] {7}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+        child {node [bbv] {9}
+          child {node [nil] {}}
+          child {node [brv] {10}
+            child {node [nil] {}}
+            child {node [nil] {}}
+          }
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Agora o 6 e 8 são vermelhos consecultivos
+    \item Tio preto (1), rotaciona
+    \item RSE 3 AR 6
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 10} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [brv] (r){6}
+    child {node [bbv] {3}
+      child {node [bbv] {1}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [brv] {8}
+      child {node [bbv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {9}
+        child {node [nil] {}}
+        child {node [brv] {10}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  \begin{itemize}
+    \item Agora o 6 e 8 são vermelhos consecultivos
+    \item Tio preto (1), rotaciona
+    \item RSE 3 AR 6
+    \item Recolorir após rotação
+  \end{itemize}
+
+    \begin{figure}[!h]
+      \centering
+      \caption{Insert 10} 
+    % \begin{preview}
+    \begin{tikzpicture}[->,>=stealth',
+      % level/.style={sibling distance = 8cm/#1, level distance = 1.5cm},
+      level 1/.style={sibling distance=0.4\textwidth, level distance = 0.8cm},
+      level 2/.style={sibling distance=0.2\textwidth, level distance = 0.8cm},
+      level 3/.style={sibling distance=0.1\textwidth, level distance = 0.8cm},
+      level 4/.style={sibling distance=0.05\textwidth, level distance = 0.8cm}]
+    \node [bbv] (r){6}
+    child {node [brv] {3}
+      child {node [bbv] {1}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {5}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+    }
+    child {node [brv] {8}
+      child {node [bbv] {7}
+        child {node [nil] {}}
+        child {node [nil] {}}
+      }
+      child {node [bbv] {9}
+        child {node [nil] {}}
+        child {node [brv] {10}
+          child {node [nil] {}}
+          child {node [nil] {}}
+        }
+      }
+    }
+    ;
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+Conjuntos de árvores para inserção
+  \begin{itemize}
+    \item[5]: 15, 4, 2, 11, 25, 26, 10, 20, 17, 1
+    \item[6]: 7, 17, 16, 28, 10, 2, 27, 24, 4, 20
+    \item[7]: 24, 12, 30, 27, 14, 23, 5, 13, 26, 29
+    \item[8]: 5, 30, 26, 24, 27, 11, 28, 18, 21, 2
+    \item[9]: 5, 16, 27, 26, 2, 11, 4, 17, 9, 12
+    \item[10]: 30, 20, 22, 11, 13, 12, 4, 14, 16, 7
+  \end{itemize}
+
+\end{frame}
+
+
+
+
